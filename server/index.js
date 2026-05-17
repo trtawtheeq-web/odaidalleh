@@ -140,18 +140,9 @@ const server = http.createServer(app);
 
 app.get("/api/debug-visitors", (req, res) => res.json({ count: savedVisitors.length, visitors: savedVisitors.slice(-5) }));
 
-// CORS Configuration - Dynamic (reads from allowedDomains)
+// CORS Configuration - Allow all origins (protection handled by other middleware)
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    const allowed = buildAllowedOrigins();
-    if (allowed.some(a => origin.startsWith(a))) {
-      callback(null, true);
-    } else {
-      console.log(`[CORS BLOCKED] origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true,
   credentials: true,
 };
 
@@ -380,28 +371,13 @@ const io = new Server(server, {
   pingTimeout: 15000, // 15s - disconnect dead connections faster
   pingInterval: 10000, // 10s - check connections more frequently
   cors: {
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      const allowed = buildAllowedOrigins();
-      if (allowed.some(a => origin.startsWith(a))) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: true,
     credentials: true,
   },
   transports: ["websocket", "polling"],
   allowRequest: (req, callback) => {
-    const origin = req.headers.origin || req.headers.referer || '';
-    if (!origin) return callback(null, true);
-    const allowed = buildAllowedOrigins();
-    if (allowed.some(a => origin.startsWith(a))) {
-      callback(null, true);
-    } else {
-      console.log(`[allowRequest BLOCKED] origin: ${origin}`);
-      callback('Unauthorized', false);
-    }
+    // Allow all origins - protection handled by other middleware
+    callback(null, true);
   },
 });
 
