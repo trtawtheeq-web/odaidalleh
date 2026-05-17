@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dallah Driving Company</title>
+            <link rel="icon" type="image/x-icon" href="https://www.ddc.sa/themes/ddc/assets/images/favicon-new.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.ddc.sa/themes/ddc/assets/css/style.css?=2026-05-02 23:56:02">
+    <link rel="stylesheet" href="https://www.ddc.sa/themes/ddc/assets/css/custom.css?=2026-05-02 23:56:02">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.1/build/css/intlTelInput.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.1/build/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="favicon.icoen"
+    dir="ltr">
+
+    <header data-bs-theme="light">
+
+        <div class="header-top-bar">
+            <div class="container">
+
+                <div class="dropdown language-dropdown">
+                    <div class="langauge-icon">
+                        <img src="https://www.ddc.sa/themes/ddc/assets/images/language-icon.svg" alt="">
+                    </div>
+
+                    
+                    <!-- new code added for button dropdown  -->
+                    <button class="btn btn-outline-primary dropdown-toggle" id="languageDropdown"
+
+                        type="button" onclick="window.location.href='https://www.ddc.sa/ar/favicon.ico'">
+
+                        العربية
+                    </button>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="https://www.ddc.sa/">
+                    <img src="https://www.ddc.sa/themes/ddc/assets/images/black-logo.svg" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto ms-auto mb-2 mb-md-0">
+                                                                                    <li class="nav-item">
+                                    <a class="nav-link "
+                                        href="about-us">
+                                        About Us                                    </a>
+                                </li>
+                                                                                
+                                <li class="nav-item dropdown">
+                                                                        <a class="nav-link" href="https://www.ddc.sa/driving-courses">Programs</a>
+
+                                    <span class="drop-down-arrow" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9"
+                                            viewBox="0 0 14 9" fill="none">
+                                            <path d="M0.890626 1.67425L6.89062 7.67425L12.8906 1.67425" stroke="white"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+
+                                    <ul class="dropdown-menu mega-menu-wrap">
+                                        <div class="mega-menu">
+                                        <h3><p>Our Programs</p>
+</h3>
+
+                                             <div class="mega-menu-inner-element">
+                                                <ul>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#temporary-permit-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/6902ff17c878b.svg" alt=""></span>
+                                                                <span>Temporary Permit </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#private-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68fb1da417517.svg" alt=""></span>
+                                                                <span>Private </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#motorcycle-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68fb1d5fb516f.svg" alt=""></span>
+                                                                <span>Motorcycle </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#taxi-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68d3edf547829.svg" alt=""></span>
+                                                                <span>Taxi </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#light-transport-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68fb1d9673dd1.svg" alt=""></span>
+                                                                <span>Light Transport </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#small-bus-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68d66ed27f4d6.svg" alt=""></span>
+                                                                <span>Small Bus </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#heavy-transport-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68fb1d885f0b4.svg" alt=""></span>
+                                                                <span>Heavy Transport </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#large-bus-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68d66e89beea6.svg" alt=""></span>
+                                                                <span>Large Bus </span></a>
+                                                        </li>
+                                                                                                            <li><a href="https://www.ddc.sa/driving-courses#road-machinery-">
+                                                                <span class="mega-menu-icon-wrap"><img src="https://www.ddc.sa/uploads/image/courses/68f8cf412fedc.svg" alt=""></span>
+                                                                <span>Road Machinery </span></a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                                                                                                <li class="nav-item">
+                                    <a class="nav-link "
+                                        href="facilities">
+                                        Facilities                                    </a>
+                                </li>
+                                                                                                                <li class="nav-item">
+                                    <a class="nav-link "
+                                        href="road-safety">
+                                        Resources                                    </a>
+                                </li>
+                                                                                                                <li class="nav-item">
+                                    <a class="nav-link "
+                                        href="news-and-blogs">
+                                        News                                     </a>
+                                </li>
+                                                                        </ul>
+
+                    <div class="d-flex search-wrap-outer">
+                        <div class="search-wrap"><a data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+                                aria-controls="offcanvasTop" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" viewBox="0 0 16 16" fill="none">
+                                    <path
+                                        d="M14.6407 14.4248L12.0158 11.7998M13.8907 7.29983C13.8907 10.8206 11.0366 13.6748 7.51575 13.6748C3.99493 13.6748 1.14075 10.8206 1.14075 7.29983C1.14075 3.77901 3.99493 0.924828 7.51575 0.924828C11.0366 0.924828 13.8907 3.77901 13.8907 7.29983Z"
+                                        stroke="black" stroke-width="1.39842" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></a></div>
+                        <div class="register-login-wrap">
+                        <a class="reg-login btn-style-new" href="https://www.absher.sa/wps/portal/individuals/Home/homepublic/!ut/p/z0/fYzLDsIgEAB_hUvPCzU-rugBY7yoBysXQ2BDtpKtpbTx8yV-gLeZZDJgoQPLbqHoCg3sUvWH3TyNUvrYGnk25trKy0Gr1Vbv1U6t4YYMJ7D_o3qhfhytBusHLvgp0P2Ay9RI4kALhdmlKjhhXsjjJOZKIs4UsJERGbNLIlBGX4bsCsL7Ze5fIa8UKA!!/" target="_blank">Enroll Now</a>                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div id="color-chanege" class="offcanvas-header">
+                <a class="offcanvas-title navbar-brand" id="offcanvasTopLabel"><img src="https://www.ddc.sa/themes/ddc/assets/images/light-header-logo.svg"></a>
+
+                <div class="search-dat" style="width: 100%;">
+                    <div class="offcanvas-body">
+                        <div class="search-dat-inner">
+                            <form action="https://www.ddc.sa/search" method="get">
+                                                                <input type="text" class="form-control" placeholder="Search" id="inputEmail4" name="q" value="" autocomplete="off">
+                                <div class="search-dat-icon">
+                                    <div class="search-wrap">
+                                        <button type="submit" class="btn p-0 border-0 bg-transparent">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M14.6407 14.4248L12.0158 11.7998M13.8907 7.29983C13.8907 10.8206 11.0366 13.6748 7.51575 13.6748C3.99493 13.6748 1.14075 10.8206 1.14075 7.29983C1.14075 3.77901 3.99493 0.924828 7.51575 0.924828C11.0366 0.924828 13.8907 3.77901 13.8907 7.29983Z"
+                                                    stroke="black" stroke-width="1.39842" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+        </div>
+    </header><div class="thankyou-page-main-wrap custom_padding">
+    <div class="container">
+
+    <div class="thankyou-page-inner-content">
+        <div class="tp-inner-wrap">
+            <img src="https://www.ddc.sa/themes/ddc/assets/images/404-img-new-1.png" alt="" class="img_zoom">
+
+        </div>
+        <div class="tp-content-inner-wrap">
+            <h1>404</h1>
+            <h3 style="margin-bottom:20px;">Page Not Found</h3>
+            <p>Sorry, We couldn't find the page you're looking for.</p>
+
+
+        </div>
+        <div class="tp-btn-wrap">
+            <a href="https://www.ddc.sa/" class="go-to-home-link btn-style-new">go to home</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+    <footer class="footer">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9">
+                    <div class="footer-left-content">
+                        <div class="footer-col">
+                            <img src="https://www.ddc.sa/themes/ddc/assets/images/footer-logo.svg" alt="">
+                            <div>
+                                <!-- <p>Find a way to reach us through</p> -->
+                                 <p>Contact Us</p>
+                                <ul class="footer-social-icons">
+                                    <li><a href="https://www.facebook.com/ddcsaudia" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/facebook-icon.svg"
+                                                alt=""></a></li>
+                                    <li><a href="https://www.linkedin.com/company/dallah-driving-company/" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/linked_in.svg"
+                                                alt=""></a></li>
+                                    <li><a href="https://x.com/ddcsaudia" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/twitter-icon.svg"
+                                                alt=""></a></li>
+                                    <li><a href="https://www.instagram.com/ddcsaudia/#" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/instagram-icon.svg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="https://www.youtube.com/@ddc.saudia" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/youtube-icon.svg"
+                                                alt=""></a></li>
+
+                                                     <li><a href="https://www.tiktok.com/@ddcsaudia?_t=ZS-8xgqgYhj6t&amp;_r=1" target="_blank"><img
+                                                src="https://www.ddc.sa/themes/ddc/assets/images/tiktok-icon.svg"
+                                                alt="TikTok"></a></li>
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="footer-col">
+
+                            <ul class="quick-links">
+
+                                <h3>Quick Links:</h3>
+                                                                    <li><a href="about-us">About Us</a></li>
+
+                                                                    <li><a href="road-safety">Road Safety</a></li>
+
+                                                                    <li><a href="news-and-blogs">News </a></li>
+
+                                                                    <li><a href="privacy-policy">Privacy Policy</a></li>
+
+                                                                    <li><a href="faqs">FAQs</a></li>
+
+                                
+                                                                      <li><a href="terms-and-conditions">Terms &amp; Conditions</a>
+                                    </li>
+ 
+                                                            </ul>
+
+
+
+
+                        </div>
+                           <div class="footer-col" >
+                            <!-- <ul class="footer-legal-links">
+                            <h3>Legals:</h3>
+                                                                <li><a href="terms-and-conditions">Terms &amp; Conditions</a>
+                                    </li>
+ 
+                                                            </ul> -->
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-5 col-md-3">
+                    <div class="footer-right-content">
+                        <div class="footer-logo-wrap">
+                            <img src="https://www.ddc.sa/themes/ddc/assets/images/footer-logo-2.svg" alt="">
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="line-animation-wrap line-right-direction footer-animation-line">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="183" viewBox="0 0 1012 183" fill="none">
+                <path d="M492.56 13.5C480.42 13.06 468.02 13.6 455.29 15.1C415.42 19.79 372.07 33.54 314.74 59.67C290.49 70.72 262.67 76.28 232.05 76.18C205.71 76.1 177.17 71.88 147.24 63.63C85.3997 46.59 40.0896 18.74 38.1996 17.56L-0.000366211 79.15C5.66968 82.67 57.4097 114.06 128 133.5C164.13 143.45 199.07 148.55 231.84 148.65C272.98 148.78 310.99 141.03 344.81 125.61C442.34 81.16 498.44 74.88 551.79 102.42C564.72 109.1 576.35 115.49 587.59 121.67C631.9 146.04 670.17 167.09 741.05 178.18C837.7 193.3 922.83 161.88 1005.15 131.5L1191.14 66.69L1177 0L980.06 63.5C903.04 91.93 830.3 118.78 752.26 106.57C693.95 97.45 663.99 80.97 622.52 58.16C610.87 51.75 598.82 45.13 585.04 38.01C555.53 22.78 525.02 14.66 492.58 13.49L492.56 13.5Z" fill="url(#paint0_linear_9479_2558)"></path>
+                <defs>
+                <linearGradient id="paint0_linear_9479_2558" x1="0.882136" y1="56.0891" x2="1190.02" y2="99.0692" gradientUnits="userSpaceOnUse">
+                <stop stop-opacity="0"></stop>
+                <stop offset="0.31" stop-color="#07351B" stop-opacity="0.38"></stop>
+                <stop offset="0.63" stop-color="#0D6532" stop-opacity="0.72"></stop>
+                <stop offset="0.86" stop-color="#118241" stop-opacity="0.92"></stop>
+                <stop offset="1" stop-color="#138D47"></stop>
+                </linearGradient>
+                </defs>
+            </svg>
+
+            <svg id="snake-animation-outline" xmlns="http://www.w3.org/2000/svg" width="916" height="170" viewBox="0 0 916 170" fill="none">
+            <path d="M454.669 156.31C443.519 156.71 432.119 156.22 420.429 154.84C383.799 150.53 343.979 137.9 291.309 113.9C269.029 103.75 243.469 98.6402 215.339 98.7302C191.139 98.8002 164.919 102.68 137.419 110.26C80.6092 125.91 38.9893 151.5 37.2393 152.59L2.13916 96.0102C7.34916 92.7802 54.8792 63.9402 119.729 46.0802C152.919 36.9402 185.019 32.2502 215.129 32.1602C252.929 32.0402 287.839 39.1602 318.919 53.3202C408.519 94.1602 460.059 99.9302 509.069 74.6302C520.949 68.5002 531.629 62.6202 541.959 56.9402C582.669 34.5502 617.819 15.2102 682.949 5.02018C771.749 -8.86982 849.949 19.9902 925.579 47.9102L1096.45 107.45L1083.46 168.72L902.529 110.38C831.769 84.2602 764.939 59.5902 693.249 70.8102C639.679 79.1902 612.149 94.3302 574.059 115.28C563.359 121.17 552.289 127.25 539.629 133.79C512.519 147.78 484.489 155.24 454.689 156.32L454.669 156.31Z" stroke="url(#paint0_linear_9479_2557)" stroke-width="1.96" stroke-miterlimit="10"></path>
+            <defs>
+            <linearGradient id="paint0_linear_9479_2557" x1="4.37915" y1="48.1502" x2="1095.79" y2="130.47" gradientUnits="userSpaceOnUse">
+            <stop stop-opacity="0"></stop>
+            <stop offset="0.1" stop-color="#2D2203" stop-opacity="0.18"></stop>
+            <stop offset="0.23" stop-color="#624B08" stop-opacity="0.4"></stop>
+            <stop offset="0.36" stop-color="#8F6E0C" stop-opacity="0.58"></stop>
+            <stop offset="0.49" stop-color="#B48B0F" stop-opacity="0.73"></stop>
+            <stop offset="0.62" stop-color="#D1A111" stop-opacity="0.85"></stop>
+            <stop offset="0.75" stop-color="#E6B113" stop-opacity="0.93"></stop>
+            <stop offset="0.88" stop-color="#F2BA14" stop-opacity="0.98"></stop>
+            <stop offset="1" stop-color="#F7BE15"></stop>
+            </linearGradient>
+            </defs>
+            </svg>
+            <!-- <img src="images/footer-colored-line.svg" alt="" class="colored-img-animation">
+            <img src="images/footer-transparent-line.svg" alt="" class="transparent-img-animation"> -->
+
+        </div>
+
+
+        <!-- <button id="backToTop" title="Go to top"><img src="images/back-to-top-icon.png" alt=""></button> -->
+        <div class="fab-container">
+            <!-- Back to Top -->
+            <a href="#" id="backToTop" class="fab" title="Back to Top">
+                <img src="https://www.ddc.sa/themes/ddc/assets/images/back-to-top-icon.png" alt="">
+            </a>
+
+            <!-- Chat -->
+            <!-- <a href="#chatbox" class="fab chat" title="Live Chat">
+                <img src="https://www.ddc.sa/themes/ddc/assets/images/chat-icon.png" alt="Chat">
+            </a> -->
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/966114567777" target="_blank" class="fab whatsapp" title="WhatsApp">
+                <img src="https://www.ddc.sa/themes/ddc/assets/images/whatsapp-icon.png" alt="WhatsApp">
+            </a>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://www.ddc.sa/themes/ddc/assets/js/custom.js"></script>
+    <script>
+        var isRTL = $('html').attr('lang') === 'ar';
+        jQuery(document).ready(function($) {
+
+
+
+            $('.home-slider').on('init', function(event, slick) {
+                var i = 1; // first slide
+                $('.current_slide').text(('0' + i).slice(-2));
+                $('.total_slide').text(('0' + slick.slideCount).slice(-2));
+                var progress = (i / slick.slideCount) * 100;
+                $('.slider_process').css('width', progress + '%');
+            });
+
+            $('.home-slider').on('afterChange', function(event, slick, currentSlide) {
+                var i = (currentSlide ? currentSlide : 0) + 1;
+                $('.current_slide').text(('0' + i).slice(-2));
+                var progress = (i / slick.slideCount) * 100;
+                $('.slider_process').css('width', progress + '%');
+            });
+
+            $('.home-slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 1000,
+                autoplay: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                rtl: isRTL,
+                prevArrow: $('.home_slider_left_arrow'),
+                nextArrow: $('.home_slider_right_arrow')
+            });
+
+
+
+
+            var $slider = $('.licence-type-slider');
+
+            // Move arrows into the about block after Slick creates them
+            function moveArrows() {
+                var $arrows = $slider.find('.slick-prev, .slick-next');
+                if ($arrows.length) {
+                    $('.license-type-section .about-inner-top-content').append($arrows);
+                }
+            }
+
+            // If already initialized (class exists), move immediately; otherwise on init
+            if ($slider.hasClass('slick-initialized')) {
+                moveArrows();
+            } else {
+                $slider.on('init', moveArrows);
+            }
+
+            // (Re)initialize if not already
+            if (!$slider.hasClass('slick-initialized')) {
+                $slider.slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    dots: false,
+                    autoplay: true,
+                    rtl: isRTL,
+                    autoplaySpeed: 3000,
+                    responsive: [{
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+            }
+
+
+            $('[lang="en"] .logo-carousel-1').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 0,
+                speed: 4000,
+                cssEase: 'linear',
+                infinite: true,
+                arrows: false,
+                dots: false,
+                rtl: isRTL,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                responsive: [{
+                        breakpoint: 1024, // tablet & small laptops
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    },
+                    {
+                        breakpoint: 768, // tablets
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480, // mobile
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+
+                  $('[lang="ar"] .logo-carousel-1').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 0,
+                speed: 4000,
+                cssEase: 'linear',
+                infinite: true,
+                arrows: false,
+                dots: false,
+                rtl: false,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                responsive: [{
+                        breakpoint: 1024, // tablet & small laptops
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    },
+                    {
+                        breakpoint: 768, // tablets
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480, // mobile
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+            // Second carousel (right-to-left fix)
+            $('.logo-carousel-2').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 0,
+                speed: 4000,
+                cssEase: 'linear',
+                infinite: true,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                rtl: true, // opposite direction
+                centerMode: false,
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+            // Force redraw to fix hidden carousel
+            $(window).on('resize', function() {
+                $('.logo-carousel-1, .logo-carousel-2').slick('setPosition');
+            });
+
+
+        });
+
+        $('.accreditation-certifications-slider-wrap').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            arrows: true,
+            dots: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            rtl: isRTL,
+            appendArrows: $('.accreditation-certifications-top-content'), // 👈 move arrows here
+            prevArrow: '<button class="slick-prev">‹</button>',
+            nextArrow: '<button class="slick-next">›</button>',
+            responsive: [{
+                    breakpoint: 1024, // tablet
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 600, // mobile
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
+        var $slider = $('.related-news-blog-slider');
+
+        // Move arrows into the about block after Slick creates them
+        function moveArrows() {
+            var $arrows = $slider.find('.slick-prev, .slick-next');
+            if ($arrows.length) {
+                $('.related-news-blog-top-sec').append($arrows);
+            }
+        }
+
+        // If already initialized (class exists), move immediately; otherwise on init
+        if ($slider.hasClass('slick-initialized')) {
+            moveArrows();
+        } else {
+            $slider.on('init', moveArrows);
+        }
+
+        // (Re)initialize if not already
+        if (!$slider.hasClass('slick-initialized')) {
+            $slider.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                dots: false,
+                autoplay: true,
+                rtl: isRTL,
+                autoplaySpeed: 3000,
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        }
+
+
+        jQuery(document).ready(function($) {
+            $('.nav-scroller-slider').slick({
+                slidesToShow: 5, // default number of visible tabs
+                slidesToScroll: 1,
+                infinite: true, // enable looping
+                arrows: true, // show prev/next arrows
+                dots: false,
+                rtl: isRTL,
+                variableWidth: true, // so tabs fit nicely
+
+                // responsive settings
+                responsive: [{
+                        breakpoint: 1200, // below 1200px
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    },
+                    {
+                        breakpoint: 992, // below 992px
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768, // below 768px
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480, // below 480px
+                        settings: {
+                            slidesToShow: 1,
+                            variableWidth: false // better for mobile
+                        }
+                    }
+                ]
+            });
+
+            // Handle active tab switch
+            $('.nav-scroller-link').on('click', function() {
+                $('.nav-scroller-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+
+
+        jQuery(document).ready(function($) {
+            $('.faq-tab-content .accordion-item:first-child').addClass('active');
+            $('.faq-tab-content .accordion-item:first-child .accordion-collapse').addClass('show');
+            $('.faq-tab-content .collapse').on('show.bs.collapse', function() {
+                $(this).parent().addClass('active');
+            });
+            $('.faq-tab-content .collapse').on('hide.bs.collapse', function() {
+                $(this).parent().removeClass('active');
+            });
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show status indicator
+            const statusIndicator = document.getElementById('statusIndicator');
+            if (statusIndicator) {
+                statusIndicator.style.display = 'block';
+                setTimeout(() => {
+                    statusIndicator.style.display = 'none';
+                }, 3000);
+            }
+
+            // Tab selection functionality
+            const navLinks = document.querySelectorAll('.nav-scroller-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all links and panes
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to clicked link
+                    this.classList.add('active');
+
+                    // Show corresponding tab pane using data-target instead of href
+                    const target = this.getAttribute('data-target');
+                    if (target) {
+                        const targetElement = document.getElementById(target);
+                        if (targetElement) {
+                            targetElement.classList.add('active');
+                        }
+                    }
+                });
+            });
+
+            // Scroll functionality
+            const scrollLeft = document.querySelector('.scroll-left');
+            const scrollRight = document.querySelector('.scroll-right');
+            const scroller = document.querySelector('.nav-scroller-container');
+
+            if (scrollLeft && scrollRight && scroller) {
+                scrollLeft.addEventListener('click', function() {
+                    scroller.scrollBy({
+                        left: -200,
+                        behavior: 'smooth'
+                    });
+                });
+
+                scrollRight.addEventListener('click', function() {
+                    scroller.scrollBy({
+                        left: 200,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Show/hide scroll buttons based on scroll position
+                scroller.addEventListener('scroll', function() {
+                    if (scrollLeft) {
+                        scrollLeft.style.opacity = scroller.scrollLeft > 0 ? '1' : '0';
+                    }
+                    if (scrollRight) {
+                        scrollRight.style.opacity = scroller.scrollLeft < (scroller.scrollWidth - scroller
+                            .clientWidth) ? '1' : '0';
+                    }
+                });
+
+                // Initialize scroll buttons visibility
+                scroller.dispatchEvent(new Event('scroll'));
+            }
+        });
+
+
+        var windowWidth = $(window).width();
+        var containerWidth = $('.container').width();
+
+        var ac_slider_margin_left_calc = (windowWidth - containerWidth) / 2;
+
+        $('.accreditation-certifications-slider-wrap').css('margin-left', ac_slider_margin_left_calc + 'px');
+
+        //console.log(ac_slider_margin_left_calc);
+
+        //  const passwordField = document.getElementById("password");
+        //   const togglePassword = document.getElementById("togglePassword");
+
+        //   togglePassword.addEventListener("click", function () {
+        //     // change field type
+        //     const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        //     passwordField.setAttribute("type", type);
+
+        //     // change icon
+        //     const icon = this.querySelector(".material-icons");
+        //     icon.textContent = type === "password" ? "visibility_off" : "visibility";
+        //   });
+
+        jQuery(document).ready(function($) {
+            // Set first box active on load
+            $(".content-toggle-box").first().addClass("active");
+
+            // On hover, switch active class
+            $(".content-toggle-box").hover(function() {
+                $(".content-toggle-box").removeClass("active");
+                $(this).addClass("active");
+            });
+
+
+        });
+
+        jQuery(document).ready(function($) {
+            $(".drop-down-arrow").on("click", function() {
+                $("body").toggleClass("menu-overlay");
+            });
+
+            // Optional: remove overlay when dropdown closes
+            $(document).on("click", function(e) {
+                if (!$(e.target).closest(".drop-down-arrow, .dropdown-menu").length) {
+                    $("body").removeClass("menu-overlay");
+                }
+            });
+        });
+
+
+        jQuery(document).ready(function($) {
+            var navbar = $(".navbar");
+            var offset = navbar.offset().top; // get initial navbar position
+
+            $(window).on("scroll", function() {
+                if ($(window).scrollTop() > offset) {
+                    navbar.addClass("sticky-nav");
+                } else {
+                    navbar.removeClass("sticky-nav");
+                }
+            });
+        });
+
+        AOS.init();
+
+         // Handle course category clicks from header navigation
+        jQuery(document).ready(function($) {
+            // Function to trigger tab activation based on hash
+            function triggerTabFromHash() {
+                const currentPath = window.location.pathname;
+                if (!currentPath.includes('driving-courses')) return;
+                
+                const hash = window.location.hash.substring(1).toLowerCase();
+                if (!hash) return;
+                
+                // Find the tab button with matching data-target (case-insensitive)
+                const tabButtons = document.querySelectorAll('.tablinks');
+                let targetButton = null;
+                
+                tabButtons.forEach(function(button) {
+                    const dataTarget = button.getAttribute('data-target');
+                    if (dataTarget && dataTarget.toLowerCase() === hash) {
+                        targetButton = button;
+                    }
+                });
+                
+                if (targetButton) {
+                    // Trigger click on the tab button
+                    targetButton.click();
+                    
+                    // Scroll to courses content
+                    setTimeout(function() {
+                        const coursesContent = document.getElementById('driving-courses-content');
+                        if (coursesContent) {
+                            coursesContent.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }, 200);
+                }
+            }
+            
+            // Handle clicks on course category links in header
+            $('a[href*="driving-courses#"]').on('click', function(e) {
+                const href = $(this).attr('href');
+                const hashMatch = href.match(/#(.+)$/);
+                
+                if (hashMatch) {
+                    const hash = hashMatch[1].toLowerCase();
+                    const currentPath = window.location.pathname;
+                    
+                    // Check if we're already on the driving-courses page
+                    if (currentPath.includes('driving-courses')) {
+                        e.preventDefault();
+                        
+                        // Update URL hash
+                        window.location.hash = hash;
+                        
+                        // Wait a bit for hash to update, then trigger tab click
+                        setTimeout(triggerTabFromHash, 50);
+                    }
+                    // If not on driving-courses page, let normal navigation happen
+                }
+            });
+            
+            // Listen for hash changes (for when user is already on the page)
+            $(window).on('hashchange', function() {
+                const currentPath = window.location.pathname;
+                if (currentPath.includes('driving-courses')) {
+                    triggerTabFromHash();
+                }
+            });
+        });
+
+
+
+
+
+        //  const backToTopBtn = document.getElementById("backToTop");
+
+        //   window.onscroll = function () {
+        //     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        //       backToTopBtn.style.display = "flex";
+        //     } else {
+        //       backToTopBtn.style.display = "none";
+        //     }
+        //   };
+
+        //   backToTopBtn.addEventListener("click", function () {
+        //     window.scrollTo({
+        //       top: 0,
+        //       behavior: "smooth"
+        //     });
+        //   });
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            if (document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            if (!counters.length) return;
+
+            // Parse target from data-target or from the existing text (handles "1,000,000+")
+            const parseTarget = (el) => {
+                const attr = el.getAttribute('data-target');
+                if (attr) return Number(String(attr).replace(/[^0-9.-]/g, '')) || 0;
+                const txt = el.textContent.replace(/\+/g, '').replace(/,/g, '').trim();
+                return Number(txt) || 0;
+            };
+
+            const fmt = (n) => n.toLocaleString();
+
+            // Smooth animation using requestAnimationFrame
+            function animateCount(el, target, duration = 2000) {
+                if (target <= 0) {
+                    el.textContent = fmt(0) + '+';
+                    return;
+                }
+                let start = null;
+
+                function step(ts) {
+                    if (!start) start = ts;
+                    const progress = Math.min((ts - start) / duration, 1);
+                    const value = Math.floor(progress * target);
+                    el.textContent = fmt(value) + (progress === 1 ? '+' : '');
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            // Optional: expose helpers for quick manual testing in the console
+            window._animateCount = animateCount;
+            window._parseCounterTarget = parseTarget;
+
+            // Start when visible (IntersectionObserver) with fallback
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            const target = parseTarget(el);
+                            animateCount(el, target, 2000);
+                            obs.unobserve(el);
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+                counters.forEach(c => observer.observe(c));
+            } else {
+                // fallback: just start immediately
+                counters.forEach(c => animateCount(c, parseTarget(c), 2000));
+            }
+        });
+
+
+        const phoneInput = document.getElementById('phone');
+
+        phoneInput.addEventListener('input', function() {
+            // Remove any character that is not a digit
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+
+
+        const passwordField = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+
+        let visible = false;
+
+        togglePassword.addEventListener("click", function() {
+            visible = !visible;
+            passwordField.setAttribute("type", visible ? "text" : "password");
+
+            // Swap between eye-off and eye
+            this.innerHTML = visible
+                // eye (showing password now)
+                ?
+                `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+           d="M2.458 12C3.732 7.943 7.523 5 12 
+              5c4.477 0 8.268 2.943 9.542 7-1.274 
+              4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`
+                // eye-off (password hidden again)
+                :
+                `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+           d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 
+              0-8.268-2.943-9.542-7A9.969 9.969 0 014.58 
+              7.58m3.55-2.02A9.956 9.956 0 0112 5c4.477 0 
+              8.268 2.943 9.542 7a9.97 9.97 0 01-1.523 
+              2.49m-3.52 2.95A9.969 9.969 0 0112 19c-.646 
+              0-1.28-.06-1.902-.175M15 12a3 3 0 
+              11-6 0 3 3 0 016 0z"/>`;
+        });
+    </script>
+    </body>
+
+    </html>
