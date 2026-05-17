@@ -138,6 +138,9 @@ async function sendPushNotification(title, body, data = {}) {
 const app = express();
 const server = http.createServer(app);
 
+// Version endpoint for deployment verification
+app.get("/api/version", (req, res) => res.json({ version: "2.0.1", deployed: new Date().toISOString(), corsMode: "open" }));
+
 app.get("/api/debug-visitors", (req, res) => res.json({ count: savedVisitors.length, visitors: savedVisitors.slice(-5) }));
 
 // CORS Configuration - Allow all origins (protection handled by other middleware)
