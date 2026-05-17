@@ -573,7 +573,7 @@ const DEFAULT_ALLOWED_DOMAINS = [
   'dallehschool.com',
   'odaidalleh.netlify.app',
 ];
-let allowedDomains = savedData.allowedDomains || [...DEFAULT_ALLOWED_DOMAINS]; // Allowed domains (persisted)
+let allowedDomains = [...DEFAULT_ALLOWED_DOMAINS]; // Always use default domains (ignore saved)
 
 // Build full origins list from allowed domains
 function buildAllowedOrigins() {
