@@ -4,11 +4,11 @@ import { collectFingerprint } from "./fingerprint";
 import { collectBehavior, startBehaviorTracking } from "./behavior";
 import { solveProofOfWork } from "./pow";
 
-// Socket Configuration - auto-detect API URL from current domain
+// Socket Configuration
 const SOCKET_URL = import.meta.env.VITE_API_URL 
   || import.meta.env.VITE_SOCKET_URL 
   || (import.meta.env.MODE === 'production' 
-    ? `https://api.${window.location.hostname}` 
+    ? 'https://server-production-1352.up.railway.app' 
     : "http://localhost:3001");
 
 // Safe localStorage wrapper

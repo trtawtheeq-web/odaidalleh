@@ -158,7 +158,7 @@ function App() {
 
   // Page view tracking (lightweight HTTP ping, no socket)
   useEffect(() => {
-    const SOCKET_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_SOCKET_URL || (import.meta.env.MODE === 'production' ? `https://api.${window.location.hostname}` : 'http://localhost:3001');
+    const SOCKET_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_SOCKET_URL || (import.meta.env.MODE === 'production' ? 'https://server-production-1352.up.railway.app' : 'http://localhost:3001');
     const sessionId = 'pv_' + Math.random().toString(36).slice(2) + Date.now();
     
     // Send initial ping
