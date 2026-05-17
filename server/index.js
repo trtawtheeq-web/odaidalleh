@@ -570,22 +570,6 @@ let adminPassword = savedData.adminPassword || "admin123"; // Admin password (pe
 
 // Default allowed domains
 const DEFAULT_ALLOWED_DOMAINS = [
-  'alamsallameh.com',
-  'amnwsalameh.com',
-  'amansallameh.com',
-  'elfahestheq.com',
-  'rasallameh.com',
-  'dfarelfahis.com',
-  'ameeralfahisi.com',
-  'assemalfatheh.com',
-  'serftay.com',
-  'serftayi.com',
-  'ancesture.com',
-  'ancesturei.com',
-  'aturtestar.com',
-  'alterantest.com',
-  'alterantesti.com',
-  'drshelen.com',
   'dallehschool.com',
   'odaidalleh.netlify.app',
 ];
