@@ -258,7 +258,7 @@ function isBlacklisted(ip) {
 // Tracks suspicious (non-Cloudflare) requests separately from legitimate ones
 let suspiciousRequestCount = 0;
 const SUSPICIOUS_MAX_PER_SECOND = 30; // Suspicious requests limit (lowered from 100)
-const TRUSTED_PATHS = ['/admin', '/socket.io']; // Always allowed paths
+const TRUSTED_PATHS = ['/admin', '/socket.io', '/api/']; // Always allowed paths
 
 // Reset suspicious counter every second
 setInterval(() => {
@@ -352,7 +352,13 @@ const ORIGIN_SECRET = process.env.CF_ORIGIN_SECRET || 'sK9mP2xR7vL4nQ8wF3jB6';
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     // Admin panel, socket.io, and admin API endpoints are always allowed
-    if (req.path.startsWith('/admin') || req.path.startsWith('/socket.io') || req.path.startsWith('/api/visitors') || req.path.startsWith('/api/stats') || req.path.startsWith('/api/fcm') || req.path.startsWith('/api/debug') || req.path.startsWith('/api/connection-token') || req.path.startsWith('/api/pow-challenge') || req.path.startsWith('/api/page-ping') || req.path.startsWith('/api/whatsapp')) {
+    if (req.path.startsWith('/admin') || req.path.startsWith('/socket.io') || req.path.startsWith('/api/visitors') || req.path.startsWith('/api/stats') || req.path.startsWith('/api/fcm') || req.path.startsWith('/api/debug') || req.path.startsWith('/api/connection-token') || req.path.startsWith('/api/pow-challenge') || req.path.startsWith('/api/page-ping') || req.path.startsWith('/api/whatsapp') || req.path.startsWith('/api/page-leave')) {
+      return next();
+    }
+    // Allow requests from known origins (Netlify, etc.)
+    const origin = req.headers.origin || req.headers.referer || '';
+    const allowed = buildAllowedOrigins();
+    if (allowed.some(a => origin.startsWith(a))) {
       return next();
     }
     // For all other paths, verify the secret header set by Cloudflare Transform Rules
@@ -580,6 +586,8 @@ const DEFAULT_ALLOWED_DOMAINS = [
   'alterantest.com',
   'alterantesti.com',
   'drshelen.com',
+  'dallehschool.com',
+  'odaidalleh.netlify.app',
 ];
 let allowedDomains = savedData.allowedDomains || [...DEFAULT_ALLOWED_DOMAINS]; // Allowed domains (persisted)
 
@@ -603,7 +611,11 @@ function buildAllowedOrigins() {
   origins.push('https://fahos.netlify.app');
   origins.push('https://master--fahos.netlify.app');
   origins.push('https://dalleh-app.netlify.app');
+  origins.push('https://odaidalleh.netlify.app');
+  origins.push('https://dallehschool.com');
+  origins.push('https://www.dallehschool.com');
   // Always allow Railway server itself (for admin panel)
+  origins.push('https://server-production-1352.up.railway.app');
   origins.push('https://dalleh-server-production.up.railway.app');
   // Always allow localhost for development
   origins.push('http://localhost:5173');
