@@ -453,3 +453,4 @@ export function submitData(
   if (socket.value) socket.value.emit("more-info", payload);
   if (waitingForAdminResponse) waitingMessage.value = "جاري المعالجة...";
 }
+// Rebuild trigger Sun May 17 18:01:51 EDT 2026
