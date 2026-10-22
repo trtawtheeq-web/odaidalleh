@@ -185,3 +185,9 @@ html[dir="ltr"] .course-modal-content,html[dir="ltr"] .course-modal-overview,htm
 html[dir="ltr"] .course-modal-close{left:auto!important;right:16px!important}
 .course-modal-image img{width:100%;display:block;min-height:320px;object-fit:cover;background:#ececec}
 
+
+
+/* i18n-ltr-v5 */
+html[dir="ltr"] input[style], html[dir="ltr"] textarea[style] { direction: ltr !important; text-align: left !important; }
+html[dir="ltr"] input[dir="rtl"], html[dir="ltr"] textarea[dir="rtl"] { direction: ltr !important; text-align: left !important; }
+html[dir="ltr"] input::placeholder, html[dir="ltr"] textarea::placeholder { text-align: left; }
