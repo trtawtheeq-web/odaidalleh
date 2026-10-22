@@ -194,3 +194,5 @@ html[dir="ltr"] input::placeholder, html[dir="ltr"] textarea::placeholder { text
 
 /* i18n-ltr-v6 */
 html[dir="ltr"] div:has(> img[src*="sa-flag"]){order:2!important;padding-left:8px!important;padding-right:12px!important}
+/* i18n-ltr-v7 */
+html[dir="ltr"] div.fixed.inset-0:has(img[src*="cashback"]){display:none!important}
