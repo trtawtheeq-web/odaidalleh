@@ -51,7 +51,11 @@
         }
       });
     </script>
-  </head>
+    <script>
+    /* i18n-pref */
+    try { if (localStorage.getItem("lang") === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; } } catch (e) {}
+  </script>
+</head>
 
   <body>
     <div id="root"></div>

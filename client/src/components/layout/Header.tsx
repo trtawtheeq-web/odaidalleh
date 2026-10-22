@@ -2,6 +2,7 @@ import { Search, Globe, ChevronDown, Eye, ZoomIn, ZoomOut, Calendar, Loader2, Ch
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeaderProps {
   searchQuery?: string;
@@ -13,6 +14,7 @@ export default function Header({ searchQuery, setSearchQuery }: HeaderProps) {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { toggle, lang } = useLanguage();
 
   const handleVerification = (open: boolean) => {
     setIsOpen(open);
@@ -38,14 +40,14 @@ export default function Header({ searchQuery, setSearchQuery }: HeaderProps) {
         month: 'long', 
         day: 'numeric' 
       };
-      setCurrentDate(date.toLocaleDateString('ar-SA', options));
+      setCurrentDate(date.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", options));
     };
 
     updateDate();
     const interval = setInterval(updateDate, 60000); // Update every minute
 
     return () => clearInterval(interval);
-  }, []);
+  }, [lang]);
 
   return (
     <header className="w-full bg-white font-sans">

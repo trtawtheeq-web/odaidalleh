@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTitleUpdater from "./components/PageTitleUpdater";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import { initializeSocket, disconnectSocket, socket, setNavigateCallback, connectSocketWithToken, setLeaving } from "./lib/store";
 import { useLocation } from "wouter";
 import AmerChat from "./components/AmerChat";
@@ -305,6 +306,7 @@ function App() {
     <TurnstileGate>
       <ErrorBoundary>
         <ThemeProvider defaultTheme="light">
+          <LanguageProvider>
           <TooltipProvider>
             <Toaster />
             <ScrollToTop />
@@ -312,6 +314,7 @@ function App() {
             <AmerChat />
             <Router />
           </TooltipProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </ErrorBoundary>
     </TurnstileGate>

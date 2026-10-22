@@ -165,3 +165,12 @@
     display: none !important;
   }
 }
+
+/* i18n */
+html[dir="ltr"] body,
+html[dir="ltr"] input,
+html[dir="ltr"] textarea,
+html[dir="ltr"] select,
+html[dir="ltr"] button {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
