@@ -1,128 +1,178 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import { AR_EN, translate, type Lang } from "@/lib/i18n";
 
-type Ctx = { lang: Lang; toggle: () => void; t: (s: string) => string };
-const CtxObj = createContext<Ctx | null>(null);
+type Ctx = {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  toggle: () => void;
+  t: (s: string) => string;
+};
 
+const LanguageContext = createContext<Ctx | null>(null);
+
+const SKIP = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "CODE"]);
 const ATTRS = ["placeholder", "title", "alt", "aria-label"];
-const SKIP = new Set(["SCRIPT", "STYLE", "NOSCRIPT"]);
-const origText = new WeakMap<Text, string>();
-const origAttr = new WeakMap<Element, Map<string, string>>();
-const ARABIC = /[\u0600-\u06FF]/;
+const textOriginals = new WeakMap<Text, string>();
+const attrOriginals = new WeakMap<Element, Map<string, string>>();
 
-function trValue(v: string): string | null {
-  const key = v.trim();
-  const en = key ? AR_EN[key] : undefined;
+function translated(value: string): string | null {
+  const key = value.trim();
+  if (!key) return null;
+  const en = AR_EN[key];
   if (!en || en === key) return null;
-  const i = v.indexOf(key);
-  return v.slice(0, i) + en + v.slice(i + key.length);
+  const at = value.indexOf(key);
+  return value.slice(0, at) + en + value.slice(at + key.length);
 }
 
-function trNode(n: Text) {
-  if (n.parentElement && SKIP.has(n.parentElement.tagName)) return;
-  const v = n.nodeValue;
-  if (!v) return;
-  const out = trValue(v);
-  if (!out) return;
-  if (!origText.has(n)) origText.set(n, v);
-  if (v !== out) n.nodeValue = out;
-}
-
-function trAttrs(el: Element) {
-  for (const a of ATTRS) {
-    const v = el.getAttribute(a);
-    if (!v) continue;
-    const out = trValue(v);
-    if (!out) continue;
-    let m = origAttr.get(el);
-    if (!m) { m = new Map(); origAttr.set(el, m); }
-    if (!m.has(a)) m.set(a, v);
-    el.setAttribute(a, out);
+function collectText(root: Node, out: Text[]): void {
+  if (root.nodeType === 3) {
+    const parent = (root as Text).parentElement;
+    if (!parent || !SKIP.has(parent.tagName)) out.push(root as Text);
+    return;
+  }
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let node = walker.nextNode();
+  while (node) {
+    const parent = (node as Text).parentElement;
+    if (parent && !SKIP.has(parent.tagName)) out.push(node as Text);
+    node = walker.nextNode();
   }
 }
 
-function walk(root: Node, fn: (n: Text) => void) {
-  if (root.nodeType === 3) return fn(root as Text);
+function collectElements(root: Node, out: Element[]): void {
   if (root.nodeType !== 1) return;
   const el = root as Element;
-  if (SKIP.has(el.tagName)) return;
-  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-  let n: Node | null;
-  while ((n = w.nextNode())) fn(n as Text);
+  out.push(el);
+  el.querySelectorAll("*").forEach((child) => out.push(child));
 }
 
-function trTree(root: Node) {
-  if (root.nodeType === 1) {
-    trAttrs(root as Element);
-    (root as Element).querySelectorAll("*").forEach(trAttrs);
-  }
-  walk(root, trNode);
-}
-
-function restoreTree(root: Node) {
-  walk(root, (n) => {
-    const o = origText.get(n);
-    if (o && n.nodeValue !== o) n.nodeValue = o;
-  });
-  const els = root.nodeType === 1 ? [root as Element, ...(root as Element).querySelectorAll("*")] : [];
-  for (const el of els) {
-    const m = origAttr.get(el);
-    if (m) m.forEach((v, a) => el.setAttribute(a, v));
+function applyAttributes(el: Element): void {
+  for (const attr of ATTRS) {
+    const value = el.getAttribute(attr);
+    if (!value) continue;
+    const en = translated(value);
+    if (!en) continue;
+    let stored = attrOriginals.get(el);
+    if (!stored) {
+      stored = new Map();
+      attrOriginals.set(el, stored);
+    }
+    if (!stored.has(attr)) stored.set(attr, value);
+    el.setAttribute(attr, en);
   }
 }
 
-function collectMissing(root: Node) {
-  const miss = new Set<string>();
-  walk(root, (n) => {
-    const v = n.nodeValue?.trim();
-    if (v && ARABIC.test(v) && !AR_EN[v]) miss.add(v);
-  });
-  if (miss.size) console.info("[i18n] untranslated:", Array.from(miss));
+export function translateTree(root: Node): void {
+  const nodes: Text[] = [];
+  collectText(root, nodes);
+  for (const node of nodes) {
+    const raw = node.nodeValue || "";
+    const en = translated(raw);
+    if (!en) continue;
+    textOriginals.set(node, raw);
+    node.nodeValue = en;
+  }
+  const elements: Element[] = [];
+  collectElements(root, elements);
+  elements.forEach(applyAttributes);
+}
+
+export function restoreTree(root: Node): void {
+  const nodes: Text[] = [];
+  collectText(root, nodes);
+  for (const node of nodes) {
+    const original = textOriginals.get(node);
+    if (original == null) continue;
+    if (node.nodeValue === translated(original)) node.nodeValue = original;
+  }
+  const elements: Element[] = [];
+  collectElements(root, elements);
+  for (const el of elements) {
+    const stored = attrOriginals.get(el);
+    if (stored) stored.forEach((value, attr) => el.setAttribute(attr, value));
+  }
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(() => (localStorage.getItem("lang") as Lang) || "ar");
+  const [lang, setLangState] = useState<Lang>(() => {
+    try {
+      return localStorage.getItem("lang") === "en" ? "en" : "ar";
+    } catch {
+      return "ar";
+    }
+  });
+
+  const setLang = useCallback((next: Lang) => {
+    setLangState(next);
+    try {
+      localStorage.setItem("lang", next);
+    } catch {
+    }
+  }, []);
 
   const toggle = useCallback(() => {
-    setLang((p) => {
-      const next = p === "ar" ? "en" : "ar";
-      localStorage.setItem("lang", next);
+    setLangState((prev) => {
+      const next: Lang = prev === "ar" ? "en" : "ar";
+      try {
+        localStorage.setItem("lang", next);
+      } catch {
+      }
       return next;
     });
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    const root = document.getElementById("root");
-    if (!root) return;
-    if (lang === "en") {
-      trTree(root);
-      if (import.meta.env.DEV) collectMissing(root);
-    } else restoreTree(root);
+    const rootEl = document.documentElement;
+    (window as unknown as { __lang: Lang }).__lang = lang;
+    rootEl.lang = lang;
+    rootEl.dir = lang === "ar" ? "rtl" : "ltr";
+    if (lang !== "en") {
+      restoreTree(document.body);
+      return;
+    }
+    translateTree(document.body);
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === "characterData") translateTree(mutation.target);
+        else mutation.addedNodes.forEach((node) => translateTree(node));
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    return () => observer.disconnect();
   }, [lang]);
 
   useEffect(() => {
-    if (lang !== "en") return;
-    const root = document.getElementById("root");
-    if (!root) return;
-    const ob = new MutationObserver((ms) => {
-      for (const m of ms) {
-        if (m.type === "characterData") trNode(m.target as Text);
-        else m.addedNodes.forEach(trTree);
+    const onClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      if (!target || !target.closest) return;
+      const button = target.closest("button, a");
+      if (!button) return;
+      const label = (button.textContent || "").trim();
+      if (label === "English" || label === "العربية") {
+        event.preventDefault();
+        toggle();
       }
-    });
-    ob.observe(root, { childList: true, subtree: true, characterData: true });
-    return () => ob.disconnect();
-  }, [lang]);
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [toggle]);
 
-  const t = (s: string) => translate(s, lang);
+  const t = useCallback((value: string) => translate(value, lang), [lang]);
+  const value = useMemo(() => ({ lang, setLang, toggle, t }), [lang, setLang, toggle, t]);
 
-  return <CtxObj.Provider value={{ lang, toggle, t }}>{children}</CtxObj.Provider>;
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
-export const useLanguage = () => {
-  const c = useContext(CtxObj);
-  if (!c) throw new Error("useLanguage must be used inside LanguageProvider");
-  return c;
-};
+export function useLanguage(): Ctx {
+  const ctx = useContext(LanguageContext);
+  if (!ctx) throw new Error("useLanguage must be used inside LanguageProvider");
+  return ctx;
+}

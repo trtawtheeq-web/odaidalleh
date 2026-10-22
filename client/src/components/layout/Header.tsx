@@ -40,7 +40,7 @@ export default function Header({ searchQuery, setSearchQuery }: HeaderProps) {
         month: 'long', 
         day: 'numeric' 
       };
-      setCurrentDate(date.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", options));
+      setCurrentDate(date.toLocaleDateString(lang === "ar" ? ((window as any).__lang==="en"?"en-US":"ar-SA") : "en-US", options));
     };
 
     updateDate();
