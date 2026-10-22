@@ -416,6 +416,9 @@ const RAW: Record<string, string> = {
 "رمز التحقق لمرة واحدة (OTP)":"One-time verification code (OTP)",
 "لتأكيد العملية أدخل رمز التحقق المرسل إلى جوالك":"To confirm the operation, enter the verification code sent to your mobile",
 "سيتم الاتصال بك أو إرسال رمز من قبل البنك المصدر للبطاقة الاحتمالية المنتهية بـ":"You will be contacted or sent a code by the card-issuing bank. Card ending in",
+  /* i18n-o4 */
+"سيتم الاتصال بك أو إرسال رمز من قبل البنك المصدر للبطاقة الائتمانية المنتهية بـ":"You will be contacted or sent a code by the card-issuing bank. Card ending in",
+"أنت تدفع لـ":"You are paying for ",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
