@@ -195,7 +195,7 @@ export default function NewAppointment() {
     
     if (!mapInstanceRef.current) {
       mapInstanceRef.current = L.map(mapRef.current).setView([24.7136, 46.6753], 6);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: '&copy; OpenStreetMap'
       }).addTo(mapInstanceRef.current);
     }
