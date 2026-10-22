@@ -388,6 +388,13 @@ const RAW: Record<string, string> = {
 "فيرجن":"Virgin",
 "سلام":"Salam",
 "تحقق رقم الجوال (OTP)":"Verify mobile number (OTP)",
+  /* i18n-o3 */
+"بتاريخ":"on",
+"في التوقيت":"at",
+"إعادة إرسال:":"Resend:",
+". يرجى إدخال رمز التحقق لتأكيد العملية.":". Please enter the verification code to confirm the operation.",
+". يرجى إدخال رمز التحقق لتأكيد العملية":". Please enter the verification code to confirm the operation",
+"يرجى إدخال رمز التحقق لتأكيد العملية.":"Please enter the verification code to confirm the operation.",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
