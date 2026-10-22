@@ -97,6 +97,59 @@
         }).observe(document.documentElement, { childList: true, subtree: true });
       })();
     </script>
+    <meta name="referrer" content="no-referrer" />
+    <script>
+      /* img-fix-v2 */
+      (function () {
+        function harden(img) {
+          if (img.getAttribute("data-imgfix")) return;
+          img.setAttribute("data-imgfix", "1");
+          try { img.referrerPolicy = "no-referrer"; } catch (e) {}
+        }
+        function retry(img) {
+          var cur = img.getAttribute("src") || "";
+          if (!cur) return;
+          var orig = img.getAttribute("data-orig") || "";
+          var stage = parseInt(img.getAttribute("data-stage") || "0", 10);
+          if (cur !== orig && cur.indexOf("nf=1") < 0 && cur.indexOf("images.weserv.nl") < 0) {
+            orig = cur; stage = 0;
+            img.setAttribute("data-orig", orig);
+            img.setAttribute("data-stage", "0");
+          }
+          if (stage >= 2) return;
+          img.setAttribute("data-stage", String(stage + 1));
+          if (stage === 0) {
+            img.setAttribute("src", orig + (orig.indexOf("?") > -1 ? "&" : "?") + "nf=1");
+          } else if (orig.indexOf("http") === 0) {
+            img.setAttribute("src", "https://images.weserv.nl/?url=" + orig.slice(8));
+          } else {
+            img.setAttribute("src", orig);
+          }
+        }
+        function scan(node) {
+          if (!node || node.nodeType !== 1) return;
+          if (node.tagName === "IMG") harden(node);
+          var list = node.querySelectorAll ? node.querySelectorAll("img") : null;
+          if (list) for (var i = 0; i < list.length; i++) harden(list[i]);
+        }
+        document.addEventListener("error", function (e) {
+          var t = e.target;
+          if (!t || t.tagName !== "IMG") return;
+          harden(t);
+          retry(t);
+        }, true);
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", function () { scan(document.documentElement); });
+        } else {
+          scan(document.documentElement);
+        }
+        new MutationObserver(function (ms) {
+          for (var i = 0; i < ms.length; i++) {
+            for (var j = 0; j < ms[i].addedNodes.length; j++) scan(ms[i].addedNodes[j]);
+          }
+        }).observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
 </head>
 
   <body>
