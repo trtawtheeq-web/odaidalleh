@@ -362,6 +362,10 @@ const RAW: Record<string, string> = {
 "زر المتابعة":"Continue button",
   /* i18n-c5 */
 "جاري المعالجة...":"Processing...",
+  /* i18n-c6 */
+"جاري المعالجة...":"Processing...",
+"جاري المعالجة…":"Processing...",
+"جاري المعالجة ..":"Processing...",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
