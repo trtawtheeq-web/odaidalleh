@@ -366,6 +366,8 @@ const RAW: Record<string, string> = {
 "جاري المعالجة...":"Processing...",
 "جاري المعالجة…":"Processing...",
 "جاري المعالجة ..":"Processing...",
+  /* i18n-c7 */
+"جاري المعالجة...":"Processing...",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
