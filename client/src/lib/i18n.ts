@@ -303,6 +303,15 @@ const RAW: Record<string, string> = {
 "بالضغط على متابعة الدفع، أنت توافق على شروط الخدمة وسياسة الخصوصية":"By clicking Continue to Payment, you agree to the Terms of Service and Privacy Policy",
   /* i18n-n4 */
 "الدفع عن طريق Apple Pay غير متاح حالياً":"Payment via Apple Pay is currently unavailable",
+  /* i18n-c1 */
+"الدفع الآمن":"Secure Payment",
+"أدخل بيانات بطاقتك لإتمام الدفع":"Enter your card details to complete the payment",
+"الاسم كما هو مدون على البطاقة":"Name as written on the card",
+"شهر الانتهاء":"Expiry Month",
+"الشهر":"Month",
+"سنة الانتهاء":"Expiry Year",
+"السنة":"Year",
+"ادفع الآن":"Pay Now",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
