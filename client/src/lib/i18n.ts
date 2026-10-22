@@ -1,6 +1,6 @@
 export type Lang = "ar" | "en";
 /** قاموس: النص العربي ← الترجمة الإنجليزية (المفتاح = النص العربي نفسه). */
-export const AR_EN: Record<string, string> = {
+const RAW: Record<string, string> = {
   // ===== الهيدر والتنقل =====
   "شركة دله لتعليم قيادة السيارات": "Dallah Driving School Company",
   "من نحن": "About Us",
@@ -199,8 +199,43 @@ export const AR_EN: Record<string, string> = {
   "من": "From",
   "إلى": "To",
   "اليوم": "Today",
-  "العودة": "Back"
+  "العودة": "Back",
+  // ===== وصف البرامج =====
+  "تم تصميم برنامج التدريب ليمنح المتدربين تجربة تعليمية متكاملة تزوّدهم بالمعرفة والمهارات والثقة اللازمة للقيادة الآمنة والمسؤولة. يشمل البرنامج دروسًا نظرية حول أنظمة المرور ومفاهيم السلامة، وتمارين محاكاة تحاكي الواقع، وتدريبًا عمليًا على الطرق بإشراف مدربين معتمدين. تم تنظيم كل مرحلة بدقة لضمان التعلم التدريجي ورفع مستوى الكفاءة، مما يؤهل المتدرب لاجتياز الاختبار بثقة واحترافية.": "The training program gives trainees a complete learning experience that builds the knowledge, skills and confidence needed for safe and responsible driving. It includes theory lessons on traffic regulations and safety concepts, realistic simulation exercises, and practical on-road training supervised by certified instructors. Every stage is carefully structured for gradual learning and higher competence, preparing the trainee to pass the test with confidence and professionalism.",
+  "تم تصميم برنامج التدريب ليمنح المتدربين تجربة تعليمية متكاملة تزوّدهم بالمعرفة والمهارات والثقة اللازمة للقيادة الآمنة والمسؤولة. يشمل البرنامج دروسًا نظرية حول أنظمة المرور ومفاهيم السلامة، وتمارين محاكاة تحاكي الواقع، وتدريبًا عمليًا على الطرق بإشراف مدربين معتمدين.": "The training program gives trainees a complete learning experience that builds the knowledge, skills and confidence needed for safe and responsible driving. It includes theory lessons on traffic regulations and safety concepts, realistic simulation exercises, and practical on-road training supervised by certified instructors.",
+  "يقدّم برنامجنا التدريبي معرفة شاملة نظرية وعملية تساعدك على إتقان قواعد المرور وتقنيات القيادة وبناء الثقة خلف المقود، مما يُعدّك لاجتياز اختبار القيادة والقيادة اليومية بثقة وكفاءة.": "Our training program delivers comprehensive theoretical and practical knowledge that helps you master traffic rules and driving techniques and build confidence behind the wheel, preparing you to pass the driving test and drive daily with confidence and competence.",
+  "تركز الدورة على التحكم المتقدم في المركبة، التعامل مع المواقف المفاجئة على الطرق، وتطبيق قوانين المرور بشكل احترافي خلال فترة زمنية قصيرة.": "The course focuses on advanced vehicle control, handling sudden situations on the road, and applying traffic laws professionally in a short period.",
+  "تشمل الدورة التحكم في المركبة، وقوانين المرور، وبروتوكولات السلامة الخاصة بالدراجات النارية. كما سيتعلمون كيفية المناورة الدراجة النارية في ظروف مختلفة، وإدارة حركة المرور، وضمان سلامتهم الشخصية وسلامة الآخرين. كما تركز الدورة على تقنيات القيادة الدفاعية وكيفية التعامل مع حالات الطوارئ. بنهاية الدورة، سيكون المشاركون مستعدين جيدًا للحصول على رخصة قيادة الدراجة النارية والقيادة بثقة على الطريق.": "The course covers vehicle control, traffic laws and motorcycle-specific safety protocols. Trainees also learn to manoeuvre the motorcycle in different conditions, manage traffic and ensure their own safety and that of others. It focuses on defensive riding techniques and handling emergencies. By the end, participants are well prepared to obtain a motorcycle license and ride confidently on the road.",
+  "تشمل الدورة تدريبًا أساسيًا على كيفية التعامل مع المركبة، وقوانين المرور المحلية، وخدمة العملاء. سيتعلم السائقون كيفية التنقل في البيئات المزدحمة، وإدارة سلامة الركاب، والتعامل مع ظروف الطرق المختلفة بالإضافة خدمة ممتازة. تضمن هذه الدورة أن يكون السائقون مستعدين جيدًا للحصول على رخصة قيادة التاكسي وتقديم خدمة فعالة للركاب.": "The course provides basic training on handling the vehicle, local traffic laws and customer service. Drivers learn to navigate congested areas, manage passenger safety and deal with different road conditions in addition to excellent service. The course ensures drivers are well prepared to obtain a taxi license and provide efficient service to passengers.",
+  "حيث تشمل تدريباً عملياً ونظرياً على التحكم بالمركبة واستخدام المكابح والتسارع بشكل صحيح، كما يتعلم المتدربون قوانين المرور الخاصة بالشاحنات الخفيفة وأساليب القيادة الدفاعية وكيفية التعامل مع حركة المرور داخل المدن والطرق السريعة، إضافة إلى التدريب على تغيير المسارات والالتفاف والوقوف والانطلاق بطريقة سليمة، وتهدف الدورة إلى تجهيز المتدربين للتعامل مع ظروف القيادة المختلفة والمواقف المتنوعة وضمان جاهزيتهم لاجتياز اختبار رخصة قيادة الشاحنات الخفيفة.": "It includes practical and theoretical training on vehicle control and correct use of brakes and acceleration. Trainees also learn the traffic laws for light trucks, defensive driving techniques and how to handle traffic in cities and on highways, along with changing lanes, turning, stopping and starting correctly. The course prepares trainees to handle different driving conditions and situations and to pass the light truck license test.",
+  "تشمل الدورة تدريباً على التحكم في المركبة، وقوانين المرور، وسلامة الركاب. لضمان تعليم كيفية إدارة الحمولة الصغيرة من الركاب، والتنقل عبر المناطق الحضرية، وضمان راحة وسلامة الركاب. تهدف الدورة إلى تجهيز السائقين للتعامل مع ظروف القيادة المختلفة والمواقف المتنوعة، مما يضمن استعدادهم للحصول على رخصة قيادة الحافلات الصغيرة": "The course includes training on vehicle control, traffic laws and passenger safety, teaching how to manage a small passenger load, move through urban areas and ensure passenger comfort and safety. The course prepares drivers to handle different driving conditions and situations, ensuring they are ready to obtain a small bus license.",
+  "تشمل الدورة مجالات أساسية مثل التحكم في المركبة، وتقنيات القيادة المتقدمة، وفهم قوانين المرور الخاصة بالشاحنات الثقيلة. سيتعلم السائقون كيفية مناورة المركبات الكبيرة بأمان، وإدارة الحمولة الثقيلة، والتنقل عبر ظروف الطرق المختلفة، بما في ذلك الطرق السريعة والمناطق الريفية. كما تركز الدورة على بروتوكولات السلامة، وتأمين الحمولة، وأفضل الممارسات للقيادة لمسافات طويلة. بنهاية الدورة، سيكون السائقون مستعدين تمامًا للحصول على رخصة قيادة الشاحنات الثقيلة وتشغيل هذه المركبات بثقة ومسؤولية.": "The course covers core areas such as vehicle control, advanced driving techniques and understanding the traffic laws for heavy trucks. Drivers learn to manoeuvre large vehicles safely, manage heavy loads and drive in different road conditions, including highways and rural areas. It also focuses on safety protocols, load securing and best practices for long-distance driving. By the end, drivers are fully prepared to obtain a heavy truck license and operate these vehicles confidently and responsibly.",
+  "تشمل الدورة المهارات الأساسية للحصول على رخصة قيادة الحافلات الكبيرة، بما في ذلك التحكم في المركبة، بروتوكولات السلامة، وفهم قوانين المرور الخاصة بالحافلات. سيتم تدريب السائقين أيضًا على كيفية إدارة حمولة الركاب الكبيرة، والتنقل عبر الطرق المزدحمة، وضمان سلامة الركاب أثناء القيادة في ظروف متنوعة. تهدف الدورة إلى تجهيز السائقين للتعامل مع الطرق الحضرية والطويلة بثقة ومسؤولية.": "The course covers the essential skills for obtaining a large bus license, including vehicle control, safety protocols and understanding bus traffic laws. Drivers are also trained to manage a large passenger load, navigate congested roads and ensure passenger safety while driving in varied conditions. The course prepares drivers to handle urban and long routes confidently and responsibly."
 };
+
+/* i18n-v4 */
+const i18nStrip = (value: string): string =>
+  value
+    .replace(/[\u064B-\u0652\u0670\u0640]/g, "")
+    .replace(/[\u0622\u0623\u0625\u0671]/g, "\u0627")
+    .replace(/\u0649/g, "\u064A")
+    .replace(/\u0629/g, "\u0647")
+    .replace(/\s+/g, " ")
+    .trim();
+const i18nNorm: Record<string, string> = {};
+Object.keys(RAW).forEach((k) => {
+  const n = i18nStrip(k);
+  if (!(n in i18nNorm)) i18nNorm[n] = RAW[k];
+});
+export const AR_EN: Record<string, string> = new Proxy(RAW, {
+  get(target, prop) {
+    if (typeof prop !== "string") return (target as Record<string, unknown>)[prop];
+    const hit = target[prop];
+    if (hit !== undefined) return hit;
+    return i18nNorm[i18nStrip(prop)];
+  },
+}) as Record<string, string>;
+
 export const translate = (value: string, lang: Lang): string =>
   lang === "ar" ? value : AR_EN[value] || value;
 export const localeFor = (lang: Lang): string => (lang === "ar" ? "ar-SA" : "en-US");
