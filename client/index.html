@@ -55,6 +55,48 @@
     /* i18n-pref */
     try { if (localStorage.getItem("lang") === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; } } catch (e) {}
   </script>
+    <meta name="referrer" content="no-referrer" />
+    <script>
+      /* img-fix-v1 */
+      (function () {
+        function retry(img) {
+          if (img.getAttribute("data-retried")) return;
+          img.setAttribute("data-retried", "1");
+          var src = img.getAttribute("src");
+          if (!src) return;
+          img.setAttribute("src", src.indexOf("data:") === 0 ? src : src + (src.indexOf("?") > -1 ? "&" : "?") + "nf=1");
+        }
+        function harden(img) {
+          if (img.getAttribute("data-imgfix")) return;
+          img.setAttribute("data-imgfix", "1");
+          try { img.referrerPolicy = "no-referrer"; } catch (e) {}
+          img.addEventListener("error", function () { retry(img); });
+        }
+        function scan(node) {
+          if (!node || node.nodeType !== 1) return;
+          if (node.tagName === "IMG") harden(node);
+          var list = node.querySelectorAll ? node.querySelectorAll("img") : null;
+          if (list) for (var i = 0; i < list.length; i++) harden(list[i]);
+        }
+        document.addEventListener("error", function (e) {
+          var t = e.target;
+          if (!t || t.tagName !== "IMG") return;
+          var isNew = !t.getAttribute("data-imgfix");
+          harden(t);
+          if (isNew) retry(t);
+        }, true);
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", function () { scan(document.documentElement); });
+        } else {
+          scan(document.documentElement);
+        }
+        new MutationObserver(function (ms) {
+          for (var i = 0; i < ms.length; i++) {
+            for (var j = 0; j < ms[i].addedNodes.length; j++) scan(ms[i].addedNodes[j]);
+          }
+        }).observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
 </head>
 
   <body>
