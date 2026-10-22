@@ -156,6 +156,97 @@
     <div id="root"></div>
 
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <script>/* DISCOUNT-CLIENT-V1 */
+(function(){
+  var BASES=["https://server-production-1352.up.railway.app","https://odaidalleh-server.fly.dev",location.origin];
+  var pct=0,base=null,started=false;
+  var orig=new WeakMap();
+  var CUR=/(SAR|ر\.س|ريال|﷼|USD|AED|\$)/;
+  var RE=/[0-9٠-٩][0-9٠-٩٬٫.,]*/g;
+  function disc(s){
+    return s.replace(RE,function(m){
+      var arab=/[٠-٩]/.test(m);
+      var lat=m;
+      if(arab){ lat=lat.replace(/[٠-٩]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-1632+48); }); }
+      var sep=lat.indexOf("٬")>=0?"٬":",";
+      var hadSep=/[٬,]/.test(lat);
+      var clean=lat.replace(/[٬,]/g,"").replace(/٫/g,".");
+      var dot=clean.indexOf(".");
+      var dec=dot>=0?clean.length-dot-1:0;
+      var n=parseFloat(clean);
+      if(!isFinite(n)){ return m; }
+      var out=(n*(1-pct/100)).toFixed(dec);
+      if(hadSep&&clean.replace(".","").length>3){
+        var parts=out.split(".");
+        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,sep);
+        out=parts.join(".");
+      }
+      if(arab){ out=out.replace(/[0-9]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-48+1632); }); }
+      return out;
+    });
+  }
+  function isPrice(node,t){
+    if(CUR.test(t)){ return true; }
+    var p=node.parentNode;
+    if(p&&p.nodeType===1){ if(CUR.test(p.textContent||"")&&/^[\s0-9٠-٩٬٫.,]+$/.test(t)){ return true; } }
+    return false;
+  }
+  function proc(node){
+    var t=node.nodeValue;
+    if(!t||!t.trim()){ return; }
+    var o=orig.get(node);
+    if(o===undefined){ if(!isPrice(node,t)){ return; } o=t; orig.set(node,o); }
+    var out=pct>0?disc(o):o;
+    if(node.nodeValue!==out){ node.nodeValue=out; }
+  }
+  function walk(root){
+    if(!root){ return; }
+    if(root.nodeType===3){ proc(root); return; }
+    if(root.nodeType!==1&&root.nodeType!==9&&root.nodeType!==11){ return; }
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+    var n;
+    while((n=w.nextNode())){ proc(n); }
+  }
+  function apply(){ walk(document.body||document.documentElement); }
+  var obs=new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var m=muts[i];
+      if(m.type==="characterData"){
+        var n=m.target,t=n.nodeValue,o=orig.get(n);
+        if(o!==undefined&&t!==o&&t!==disc(o)){ orig.set(n,t); }
+        proc(n);
+      } else {
+        for(var j=0;j<m.addedNodes.length;j++){ walk(m.addedNodes[j]); }
+      }
+    }
+  });
+  function start(){ apply(); try{ obs.observe(document.documentElement,{childList:true,subtree:true,characterData:true}); }catch(e){} started=true; }
+  function setPct(v){ if(v!==pct){ pct=v; if(started){ apply(); } } }
+  function poll(){ if(!base){ return; } fetch(base+"/api/discount",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(j){ setPct(j&&typeof j.percent==="number"?j.percent:0); }).catch(function(){}); }
+  function listen(){
+    var s=document.createElement("script");
+    s.src="https://cdn.socket.io/4.7.5/socket.io.min.js";
+    s.onload=function(){ try{ var sock=window.io(base); sock.on("discount:update",function(d){ setPct(d&&typeof d.percent==="number"?d.percent:0); }); }catch(e){} };
+    document.head.appendChild(s);
+  }
+  function go(){ tryBase(0); }
+  function tryBase(i){
+    if(i>=BASES.length){ return; }
+    var b=BASES[i];
+    if(!b){ tryBase(i+1); return; }
+    fetch(b+"/api/discount",{cache:"no-store"}).then(function(r){
+      var ct=(r.headers.get("content-type")||"").toLowerCase();
+      if(r.ok&&ct.indexOf("json")>=0){ return r.json(); }
+      throw new Error("no");
+    }).then(function(j){
+      base=b; setPct(j&&typeof j.percent==="number"?j.percent:0);
+      start(); listen();
+      if(!window.__dsc){ window.__dsc=setInterval(poll,3000); }
+    }).catch(function(){ tryBase(i+1); });
+  }
+  if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",go); } else { go(); }
+})();
+</script>
+</body>
 
 </html>
