@@ -19,7 +19,7 @@ export function SimpleMap({
   const embedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDummyKey&q=${lat},${lng}`;
   
   // Fallback: Use a simpler embed URL that doesn't require API key
-  const simpleEmbedUrl = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+  const simpleEmbedUrl = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=13&ie=UTF8&iwloc=&output=embed&hl=en`;
 
   return (
     <div className={cn("w-full h-[300px] md:h-[400px] bg-gray-200 rounded-lg overflow-hidden", className)}>
