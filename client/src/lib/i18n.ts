@@ -301,6 +301,8 @@ const RAW: Record<string, string> = {
   /* i18n-n3 */
 "غير متاح حاليا الدفع عن طريق Apple Pay":"Payment via Apple Pay is currently unavailable",
 "بالضغط على متابعة الدفع، أنت توافق على شروط الخدمة وسياسة الخصوصية":"By clicking Continue to Payment, you agree to the Terms of Service and Privacy Policy",
+  /* i18n-n4 */
+"الدفع عن طريق Apple Pay غير متاح حالياً":"Payment via Apple Pay is currently unavailable",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
