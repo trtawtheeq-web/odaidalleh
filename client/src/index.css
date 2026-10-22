@@ -191,3 +191,6 @@ html[dir="ltr"] .course-modal-close{left:auto!important;right:16px!important}
 html[dir="ltr"] input[style], html[dir="ltr"] textarea[style] { direction: ltr !important; text-align: left !important; }
 html[dir="ltr"] input[dir="rtl"], html[dir="ltr"] textarea[dir="rtl"] { direction: ltr !important; text-align: left !important; }
 html[dir="ltr"] input::placeholder, html[dir="ltr"] textarea::placeholder { text-align: left; }
+
+/* i18n-ltr-v6 */
+html[dir="ltr"] div:has(> img[src*="sa-flag"]){order:2!important;padding-left:8px!important;padding-right:12px!important}
