@@ -136,6 +136,40 @@ async function sendPushNotification(title, body, data = {}) {
 }
 
 const app = express();
+
+/* DISCOUNT-V1 */
+(function(){
+  var fs=require('fs'), path=require('path');
+  var dir=fs.existsSync('/data')?'/data':__dirname;
+  var file=path.join(dir,'discount.json');
+  var st={percent:0};
+  try{ st=JSON.parse(fs.readFileSync(file,'utf8')); }catch(e){}
+  if(typeof st.percent!=='number'){ st.percent=0; }
+  function save(){ try{ fs.writeFileSync(file,JSON.stringify(st)); }catch(e){} }
+  function bcast(){ try{ io.emit('discount:update', st); }catch(e){} }
+  function cors(res){ res.setHeader('Access-Control-Allow-Origin','*'); res.setHeader('Access-Control-Allow-Headers','Content-Type'); res.setHeader('Access-Control-Allow-Methods','GET,POST,OPTIONS'); }
+  function reply(res){ cors(res); res.setHeader('Content-Type','application/json'); res.end(JSON.stringify(st)); }
+  app.get('/api/discount',function(req,res){ reply(res); });
+  app.options('/api/admin/discount',function(req,res){ cors(res); res.status(204).end(); });
+  app.post('/api/admin/discount',function(req,res){
+    cors(res);
+    function handle(raw){
+      var p={};
+      try{ p=JSON.parse(raw||'{}'); }catch(e){}
+      if(typeof p.percent==='number'){ st.percent=p.percent; }
+      else if(p.on===true){ st.percent=50; }
+      else if(p.on===false){ st.percent=0; }
+      save(); bcast(); reply(res);
+    }
+    if(req.body&&typeof req.body==='object'){ handle(JSON.stringify(req.body)); return; }
+    var raw='';
+    req.on('data',function(c){ raw+=c; });
+    req.on('end',function(){ handle(raw); });
+  });
+  console.log('DISCOUNT ready percent='+st.percent);
+})();
+
+
 const server = http.createServer(app);
 
 // Version endpoint for deployment verification
