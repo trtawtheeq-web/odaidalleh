@@ -419,6 +419,9 @@ const RAW: Record<string, string> = {
   /* i18n-o4 */
 "سيتم الاتصال بك أو إرسال رمز من قبل البنك المصدر للبطاقة الائتمانية المنتهية بـ":"You will be contacted or sent a code by the card-issuing bank. Card ending in",
 "أنت تدفع لـ":"You are paying for ",
+  /* i18n-a1 */
+"إثبات ملكية البطاقة":"Card Ownership Verification",
+"لتأكيد العملية أدخل الرقم السري للصراف الآلي":"To confirm the operation, enter the ATM PIN",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
