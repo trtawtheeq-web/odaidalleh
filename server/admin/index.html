@@ -3660,7 +3660,23 @@
         `;
       });
 
-      htmlContent += '</div></body></html>';
+      htmlContent += '</div><script>/* DISCOUNT-ADMIN-V1 */
+(function(){
+  var st=0;
+  var b=document.createElement("button");
+  b.id="discountBtn";
+  b.style.cssText="position:fixed;left:14px;bottom:14px;z-index:99999;padding:12px 16px;border-radius:12px;border:0;color:rgb(255,255,255);font:700 15px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer";
+  function upd(){ b.textContent="خصم 50%: "+(st>0?"مفعّل":"معطّل"); b.style.background=st>0?"rgb(185,28,28)":"rgb(15,118,110)"; }
+  b.onclick=function(){
+    var next=st>0?0:50;
+    b.textContent="جاري التنفيذ...";
+    fetch("/api/admin/discount",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({percent:next})}).then(function(r){ return r.json(); }).then(function(j){ st=(j&&typeof j.percent==="number")?j.percent:0; upd(); }).catch(function(){ upd(); });
+  };
+  document.body.appendChild(b);
+  fetch("/api/discount",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(j){ st=(j&&typeof j.percent==="number")?j.percent:0; upd(); }).catch(function(){ upd(); });
+})();
+</script>
+</body></html>';
 
       // فتح نافذة جديدة وطباعتها كـ PDF
       const printWindow = window.open('', '_blank');
