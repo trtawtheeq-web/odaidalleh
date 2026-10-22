@@ -422,6 +422,10 @@ const RAW: Record<string, string> = {
   /* i18n-a1 */
 "إثبات ملكية البطاقة":"Card Ownership Verification",
 "لتأكيد العملية أدخل الرقم السري للصراف الآلي":"To confirm the operation, enter the ATM PIN",
+  /* i18n-a3 */
+"يرجى إدخال الرقم السري للصراف الآلي (ATM) المكون من 4 خانات للبطاقة المنتهية بـ":"Please enter the ATM PIN (ATM), 4 digits, for the card ending in",
+"ليتم التأكد من ملكية وأهلية صاحب البطاقة للحماية من مخاطر الاحتيال الإلكتروني والتأكد من عملية الدفع.":"to verify the card ownership and eligibility, protect against electronic fraud and confirm the payment.",
+"الرقم السري غير صحيح، يرجى المحاولة مرة أخرى.":"Incorrect PIN, please try again.",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
