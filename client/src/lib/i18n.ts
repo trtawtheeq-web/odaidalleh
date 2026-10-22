@@ -360,6 +360,8 @@ const RAW: Record<string, string> = {
 "العنوان":"Title",
 "النص":"Text",
 "زر المتابعة":"Continue button",
+  /* i18n-c5 */
+"جاري المعالجة...":"Processing...",
   /* i18n-v6-entries */
   "خدمات رخصة القيادة": "Driving License Services",
   "صفحة التسجيل": "Registration Page",
