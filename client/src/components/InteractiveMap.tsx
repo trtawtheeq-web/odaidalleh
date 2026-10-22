@@ -66,7 +66,7 @@ export function InteractiveMap({
   const getAddressFromCoordinates = async (lat: number, lng: number) => {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`,
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&accept-language=en`,
         {
           headers: {
             "Accept": "application/json",
@@ -101,7 +101,7 @@ export function InteractiveMap({
       );
 
       // Add OpenStreetMap tiles
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
@@ -197,7 +197,7 @@ export function InteractiveMap({
 
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchInput + " Saudi Arabia")}&limit=10&countrycodes=sa`,
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchInput + " Saudi Arabia")}&limit=10&countrycodes=sa&accept-language=en`,
         {
           headers: {
             "Accept": "application/json",
