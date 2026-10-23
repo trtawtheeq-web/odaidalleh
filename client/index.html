@@ -156,9 +156,9 @@
     <div id="root"></div>
 
     <script type="module" src="/src/main.tsx"></script>
-  <script>/* DISCOUNT-CLIENT-V3 */
+  <script>/* DISCOUNT-CLIENT-V4 */
 (function(){
-  if(window.__dsc3){ return; } window.__dsc3=1;
+  if(window.__dsc4){ return; } window.__dsc4=1;
   var BASES=["https://odaidalleh.onrender.com"].concat([location.origin]);
   var pct=0,base=null,started=false;
   var orig=new WeakMap();
@@ -194,6 +194,7 @@
     });
   }
   function isPrice(node,t){
+    if(!/[0-9٠-٩]/.test(t)){ return false; }
     if(CUR.test(t)){ return true; }
     var p=node.parentNode;
     if(p&&p.nodeType===1){ if(CUR.test(p.textContent||"")&&/^[\s0-9٠-٩٬٫.,]+$/.test(t)){ return true; } }
