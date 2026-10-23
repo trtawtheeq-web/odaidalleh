@@ -55,7 +55,29 @@
     /* i18n-pref */
     try { if (localStorage.getItem("lang") === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; } } catch (e) {}
   </script>
-    <meta name="referrer" content="no-referrer" />
+    <script>/* TILEFIX-V1 */
+(function(){
+  if(window.__tileFix){ return; } window.__tileFix=1;
+  function isTile(s){ return s.indexOf("arcgisonline.com")>-1 || s.indexOf("tile.openstreetmap.org")>-1 || s.indexOf("cartocdn.com")>-1 || s.indexOf("unpkg.com/leaflet")>-1 || s.indexOf("basemaps")>-1; }
+  function tag(img){
+    if(!img||img.tagName!=="IMG"){ return; }
+    var s=img.getAttribute("src")||"";
+    if(!isTile(s)){ return; }
+    img.setAttribute("data-nofix","1");
+    try{ img.referrerPolicy="no-referrer"; }catch(e){}
+    if(s.indexOf("nf=1")<0){ img.setAttribute("src", s + (s.indexOf("?")>-1?"&":"?") + "nf=1"); }
+  }
+  var _ac=Node.prototype.appendChild;
+  Node.prototype.appendChild=function(n){ var r=_ac.apply(this,arguments); try{ if(n&&n.tagName==="IMG"){ tag(n); } if(n&&n.querySelectorAll){ var l=n.querySelectorAll("img"); for(var i=0;i<l.length;i++){ tag(l[i]); } } }catch(e){} return r; };
+  setInterval(function(){ var l=document.images; for(var i=0;i<l.length;i++){ tag(l[i]); } }, 1000);
+  var n=0;
+  var t=setInterval(function(){
+    n++; try{ if(window.L&&L.Icon&&L.Icon.Default&&L.Icon.Default.mergeOptions){ L.Icon.Default.mergeOptions({ iconRetinaUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png", iconUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", shadowUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png" }); } }catch(e){}
+    if(n>20){ clearInterval(t); }
+  }, 500);
+})();
+</script>
+<meta name="referrer" content="no-referrer" />
     <script>
       /* img-fix-v1 */
       (function () {
