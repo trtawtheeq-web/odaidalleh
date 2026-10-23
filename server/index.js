@@ -136,6 +136,9 @@ async function sendPushNotification(title, body, data = {}) {
 }
 
 const app = express();
+/* API-EARLY-V1 */
+app.get('/api/whatsapp', function(req,res){ res.setHeader('Access-Control-Allow-Origin','*'); res.setHeader('Content-Type','application/json'); res.end(JSON.stringify({number: whatsappNumber || ''})); });
+
 
 /* DISCOUNT-V1 */
 (function(){
@@ -617,6 +620,9 @@ function buildAllowedOrigins() {
   // Always allow localhost for development
   origins.push('http://localhost:5173');
   origins.push('http://localhost');
+/* ORIGIN-4D-V1 */
+origins.push('https://fourdalehschool.com');
+origins.push('https://www.fourdalehschool.com');
   return origins;
 }
 
