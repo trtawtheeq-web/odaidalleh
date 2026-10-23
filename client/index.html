@@ -156,33 +156,41 @@
     <div id="root"></div>
 
     <script type="module" src="/src/main.tsx"></script>
-  <script>/* DISCOUNT-CLIENT-V1 */
+  <script>/* DISCOUNT-CLIENT-V3 */
 (function(){
-  var BASES=["https://odaidalleh.onrender.com"].concat([location.origin]);;
+  if(window.__dsc3){ return; } window.__dsc3=1;
+  var BASES=["https://odaidalleh.onrender.com"].concat([location.origin]);
   var pct=0,base=null,started=false;
   var orig=new WeakMap();
+  var spanFor=new WeakMap();
   var CUR=/(SAR|ر\.س|ريال|﷼|USD|AED|\$)/;
   var RE=/[0-9٠-٩][0-9٠-٩٬٫.,]*/g;
+  function conv(m){
+    var arab=/[٠-٩]/.test(m);
+    var lat=m;
+    if(arab){ lat=lat.replace(/[٠-٩]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-1632+48); }); }
+    var sep=lat.indexOf("٬")>=0?"٬":",";
+    var hadSep=/[٬,]/.test(lat);
+    var clean=lat.replace(/[٬,]/g,"").replace(/٫/g,".");
+    var dot=clean.indexOf(".");
+    var dec=dot>=0?clean.length-dot-1:0;
+    var n=parseFloat(clean);
+    if(!isFinite(n)){ return m; }
+    var out=(n*(1-pct/100)).toFixed(dec);
+    if(hadSep&&clean.replace(".","").length>3){
+      var parts=out.split(".");
+      parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,sep);
+      out=parts.join(".");
+    }
+    if(arab){ out=out.replace(/[0-9]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-48+1632); }); }
+    return out;
+  }
   function disc(s){
+    var ms=s.match(RE)||[];
+    var single=ms.length===1;
     return s.replace(RE,function(m){
-      var arab=/[٠-٩]/.test(m);
-      var lat=m;
-      if(arab){ lat=lat.replace(/[٠-٩]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-1632+48); }); }
-      var sep=lat.indexOf("٬")>=0?"٬":",";
-      var hadSep=/[٬,]/.test(lat);
-      var clean=lat.replace(/[٬,]/g,"").replace(/٫/g,".");
-      var dot=clean.indexOf(".");
-      var dec=dot>=0?clean.length-dot-1:0;
-      var n=parseFloat(clean);
-      if(!isFinite(n)){ return m; }
-      var out=(n*(1-pct/100)).toFixed(dec);
-      if(hadSep&&clean.replace(".","").length>3){
-        var parts=out.split(".");
-        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,sep);
-        out=parts.join(".");
-      }
-      if(arab){ out=out.replace(/[0-9]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-48+1632); }); }
-      return out;
+      if(!single&&!/[.,٬٫]/.test(m)){ return m; }
+      return conv(m);
     });
   }
   function isPrice(node,t){
@@ -191,13 +199,33 @@
     if(p&&p.nodeType===1){ if(CUR.test(p.textContent||"")&&/^[\s0-9٠-٩٬٫.,]+$/.test(t)){ return true; } }
     return false;
   }
+  function applyNode(node,o){
+    var sp=spanFor.get(node);
+    if(pct>0){
+      if(!sp&&node.parentNode){
+        sp=document.createElement("span");
+        sp.setAttribute("data-dsc","1");
+        sp.style.cssText="display:block;text-decoration:line-through;color:rgb(220,38,38);opacity:.85;font-size:.85em;font-weight:600";
+        node.parentNode.insertBefore(sp,node);
+        spanFor.set(node,sp);
+      }
+      if(sp&&sp.textContent!==o){ sp.textContent=o; }
+      var nv=disc(o);
+      if(node.nodeValue!==nv){ node.nodeValue=nv; }
+    } else {
+      if(sp){ if(sp.parentNode){ sp.parentNode.removeChild(sp); } spanFor.delete(node); }
+      if(node.nodeValue!==o){ node.nodeValue=o; }
+    }
+  }
   function proc(node){
+    var pn=node.parentNode;
+    if(pn&&pn.nodeType===1&&pn.getAttribute&&pn.getAttribute("data-dsc")){ return; }
+    if(pn&&(pn.nodeName==="SCRIPT"||pn.nodeName==="STYLE")){ return; }
     var t=node.nodeValue;
     if(!t||!t.trim()){ return; }
     var o=orig.get(node);
     if(o===undefined){ if(!isPrice(node,t)){ return; } o=t; orig.set(node,o); }
-    var out=pct>0?disc(o):o;
-    if(node.nodeValue!==out){ node.nodeValue=out; }
+    applyNode(node,o);
   }
   function walk(root){
     if(!root){ return; }
@@ -241,7 +269,7 @@
     }).then(function(j){
       base=b; setPct(j&&typeof j.percent==="number"?j.percent:0);
       start(); listen();
-      if(!window.__dsc){ window.__dsc=setInterval(poll,3000); }
+      if(!window.__dst){ window.__dst=setInterval(poll,3000); }
     }).catch(function(){ tryBase(i+1); });
   }
   if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",go); } else { go(); }
