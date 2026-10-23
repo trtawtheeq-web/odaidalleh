@@ -196,3 +196,10 @@ html[dir="ltr"] input::placeholder, html[dir="ltr"] textarea::placeholder { text
 html[dir="ltr"] div:has(> img[src*="sa-flag"]){order:2!important;padding-left:8px!important;padding-right:12px!important}
 /* i18n-ltr-v7 */
 html[dir="ltr"] div.fixed.inset-0:has(img[src*="cashback"]){display:none!important}
+
+/* i18n-ltr-v8 */
+html[dir="ltr"] .courses-tabs-carousel { direction: ltr !important; }
+html[dir="ltr"] .courses-tabs-header { direction: ltr !important; }
+html[dir="ltr"] .courses-tab-item h6 { direction: ltr !important; }
+html[dir="ltr"] .courses-tab-nav-btn.prev { order: 0 !important; }
+html[dir="ltr"] .courses-tab-nav-btn.next { order: 2 !important; }
