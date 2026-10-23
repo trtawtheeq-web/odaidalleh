@@ -276,6 +276,38 @@
   if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",go); } else { go(); }
 })();
 </script>
+<script>/* NAVSCROLL-V1 */
+(function(){
+  if(window.__navScroll){ return; } window.__navScroll=1;
+  var lastScroll=0,lx=-1,ly=-1;
+  function menus(){ return document.querySelectorAll(".ddc-dropdown-menu"); }
+  function isShown(m){ return m&&m.classList&&m.classList.contains("show"); }
+  function fire(el,type){ try{ el.dispatchEvent(new MouseEvent(type,{bubbles:true,cancelable:true,relatedTarget:document.body})); }catch(e){} }
+  function closeAll(){
+    var ms=menus();
+    for(var i=0;i<ms.length;i++){
+      if(isShown(ms[i])){
+        var t=ms[i].parentNode;
+        if(t){ fire(t,"mouseout"); } else { ms[i].classList.remove("show"); }
+      }
+    }
+  }
+  function openIfHover(){
+    var ms=menus();
+    for(var i=0;i<ms.length;i++){
+      var t=ms[i].parentNode;
+      if(t&&!isShown(ms[i])&&t.matches&&t.matches(":hover")){ fire(t,"mouseover"); }
+    }
+  }
+  window.addEventListener("scroll",function(){ lastScroll=Date.now(); closeAll(); },{passive:true});
+  window.addEventListener("mousemove",function(e){
+    if(Date.now()-lastScroll<400){ lx=e.clientX; ly=e.clientY; return; }
+    var d=Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly);
+    lx=e.clientX; ly=e.clientY;
+    if(d>6){ openIfHover(); }
+  },{passive:true});
+})();
+</script>
 </body>
 
 </html>
