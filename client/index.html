@@ -55,9 +55,10 @@
     /* i18n-pref */
     try { if (localStorage.getItem("lang") === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; } } catch (e) {}
   </script>
-    <script>/* TILEFIX-V1 */
+    <script>/* TILEFIX-V2 */
 (function(){
-  if(window.__tileFix){ return; } window.__tileFix=1;
+  if(window.__tileFix2){ return; } window.__tileFix2=1;
+  var CDN="https://unpkg.com/leaflet@1.9.4/dist/images/";
   function isTile(s){ return s.indexOf("arcgisonline.com")>-1 || s.indexOf("tile.openstreetmap.org")>-1 || s.indexOf("cartocdn.com")>-1 || s.indexOf("unpkg.com/leaflet")>-1 || s.indexOf("basemaps")>-1; }
   function tag(img){
     if(!img||img.tagName!=="IMG"){ return; }
@@ -67,14 +68,25 @@
     try{ img.referrerPolicy="no-referrer"; }catch(e){}
     if(s.indexOf("nf=1")<0){ img.setAttribute("src", s + (s.indexOf("?")>-1?"&":"?") + "nf=1"); }
   }
+  function fixMarker(){
+    var l=document.querySelectorAll("img.leaflet-marker-icon,img.leaflet-marker-shadow");
+    for(var i=0;i<l.length;i++){
+      var img=l[i], s=img.getAttribute("src")||"";
+      if(s.indexOf("unpkg.com/leaflet")>-1){ continue; }
+      var fn=s.split("?")[0].split("/").pop();
+      if(!fn||fn.indexOf("marker")<0){ fn="marker-icon.png"; }
+      img.setAttribute("data-nofix","1");
+      img.setAttribute("src", CDN+fn);
+    }
+  }
   var _ac=Node.prototype.appendChild;
   Node.prototype.appendChild=function(n){ var r=_ac.apply(this,arguments); try{ if(n&&n.tagName==="IMG"){ tag(n); } if(n&&n.querySelectorAll){ var l=n.querySelectorAll("img"); for(var i=0;i<l.length;i++){ tag(l[i]); } } }catch(e){} return r; };
-  setInterval(function(){ var l=document.images; for(var i=0;i<l.length;i++){ tag(l[i]); } }, 1000);
+  setInterval(function(){ var l=document.images; for(var i=0;i<l.length;i++){ tag(l[i]); } fixMarker(); }, 700);
   var n=0;
   var t=setInterval(function(){
-    n++; try{ if(window.L&&L.Icon&&L.Icon.Default&&L.Icon.Default.mergeOptions){ L.Icon.Default.mergeOptions({ iconRetinaUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png", iconUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", shadowUrl:"https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png" }); } }catch(e){}
-    if(n>20){ clearInterval(t); }
-  }, 500);
+    n++; try{ if(window.L&&L.Icon&&L.Icon.Default&&L.Icon.Default.mergeOptions){ L.Icon.Default.mergeOptions({ iconRetinaUrl:CDN+"marker-icon-2x.png", iconUrl:CDN+"marker-icon.png", shadowUrl:CDN+"marker-shadow.png" }); } if(window.L&&L.Icon&&L.Icon.Default){ L.Icon.Default.imagePath=CDN; } }catch(e){}
+    if(n>30){ clearInterval(t); }
+  }, 400);
 })();
 </script>
 <meta name="referrer" content="no-referrer" />
