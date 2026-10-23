@@ -148,6 +148,7 @@ export default function NewAppointment() {
   // Service state
   const [vehicleWheels, setVehicleWheels] = useState("سيارة خاصة");
   const [region, setRegion] = useState("");
+  const [delegateEnabled, setDelegateEnabled] = useState(false);
   const [serviceType, setServiceType] = useState("خدمة الفحص الدوري");
   const [inspectionCenter, setInspectionCenter] = useState("");
 
