@@ -94,6 +94,7 @@ const centerCoordinates: Record<string, [number, number]> = {
   "دله - الباحة": [20.0129,41.4677],
 };
 
+/* NO-HOME-V1 */
 const timeSlots = [
   "07:00 ص", "07:30 ص", "08:00 ص", "08:30 ص",
   "09:00 ص", "09:30 ص", "10:00 ص", "10:30 ص",
@@ -123,7 +124,6 @@ export default function NewAppointment() {
   const [phoneError, setPhoneError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [delegateEnabled, setDelegateEnabled] = useState(false);
   const [homeLocation, setHomeLocation] = useState<{lat: number; lng: number; address: string} | null>(null);
   const [delegateType, setDelegateType] = useState<"resident" | "gulf">("resident");
   const [delegateName, setDelegateName] = useState("");
@@ -530,17 +530,7 @@ export default function NewAppointment() {
             {!emailError && formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
           </div>
 
-          <div className="flex items-start gap-4 mb-4">
-            <input 
-              type="checkbox" 
-              className="w-[25px] h-[25px] min-w-[25px] mt-1 accent-[#20744c]"
-              checked={delegateEnabled}
-              onChange={(e) => setDelegateEnabled(e.target.checked)}
-            />
-            <label className="text-[#516669] text-[17px] font-medium">
-              هل ترغب بقدوم المدرب/ـة الى منزلك لتلقي التدريب؟<span className="text-red-500">*</span>
-            </label>
-          </div>
+          
 
           {delegateEnabled && (
             <div className="mb-6 p-4 md:p-6 bg-gray-50 rounded-xl border border-gray-200">
