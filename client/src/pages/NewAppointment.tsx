@@ -36,39 +36,62 @@ const regions = [
   "اختر المنطقة",
   "منطقة الرياض",
   "منطقة مكة المكرمة",
+  "منطقة المدينة المنورة",
+  "منطقة جدة",
+  "المنطقة الشرقية (الدمام)",
+  "منطقة القصيم (بريدة)",
+  "منطقة عسير (أبها)",
+  "منطقة تبوك",
+  "منطقة حائل",
+  "منطقة الحدود الشمالية (عرعر)",
+  "منطقة الجوف (سكاكا)",
   "منطقة جازان",
-];
+  "منطقة نجران",
+  "منطقة الباحة",
+]; /* REGIONS-V2 */
 
 const centersByRegion: Record<string, string[]> = {
-  "منطقة الرياض": [
-    "دله - التخصصي (الرياض)",
-    "دله - السلي (الرياض)",
-    "دله - الخرج",
-    "دله - الدوادمي",
-    "دله - المجمعة",
-    "دله - وادي الدواسر",
-    "دله - شقراء",
-  ],
-  "منطقة مكة المكرمة": [
-    "دله - جدة",
-    "دله - الطائف",
-  ],
-  "منطقة جازان": [
-    "دله - جيزان",
-  ],
+  "منطقة الرياض": ["دله - التخصصي (الرياض)","دله - السلي (الرياض)","دله - الخرج","دله - الدوادمي","دله - المجمعة","دله - وادي الدواسر","دله - شقراء"],
+  "منطقة مكة المكرمة": ["دله - جدة","دله - الطائف"],
+  "منطقة المدينة المنورة": ["دله - المدينة المنورة"],
+  "منطقة جدة": ["دله - جدة"],
+  "المنطقة الشرقية (الدمام)": ["دله - الدمام","دله - الخبر","دله - الأحساء"],
+  "منطقة القصيم (بريدة)": ["دله - بريدة","دله - عنيزة"],
+  "منطقة عسير (أبها)": ["دله - أبها","دله - خميس مشيط"],
+  "منطقة تبوك": ["دله - تبوك"],
+  "منطقة حائل": ["دله - حائل"],
+  "منطقة الحدود الشمالية (عرعر)": ["دله - عرعر"],
+  "منطقة الجوف (سكاكا)": ["دله - سكاكا"],
+  "منطقة جازان": ["دله - جيزان"],
+  "منطقة نجران": ["دله - نجران"],
+  "منطقة الباحة": ["دله - الباحة"],
 };
 
 const centerCoordinates: Record<string, [number, number]> = {
-  "دله - التخصصي (الرياض)": [24.7136, 46.6753],
-  "دله - السلي (الرياض)": [24.6100, 46.7700],
-  "دله - الخرج": [24.1556, 47.3122],
-  "دله - الدوادمي": [24.5073, 44.3940],
-  "دله - المجمعة": [25.9000, 45.3500],
-  "دله - وادي الدواسر": [20.4429, 44.7240],
-  "دله - شقراء": [25.2500, 45.2500],
-  "دله - جدة": [21.5433, 39.1728],
-  "دله - الطائف": [21.2703, 40.4158],
-  "دله - جيزان": [16.8892, 42.5611],
+  "دله - التخصصي (الرياض)": [24.7136,46.6753],
+  "دله - السلي (الرياض)": [24.61,46.77],
+  "دله - الخرج": [24.1556,47.3122],
+  "دله - الدوادمي": [24.5073,44.394],
+  "دله - المجمعة": [25.9,45.35],
+  "دله - وادي الدواسر": [20.4429,44.724],
+  "دله - شقراء": [25.25,45.25],
+  "دله - جدة": [21.5433,39.1728],
+  "دله - الطائف": [21.2703,40.4158],
+  "دله - المدينة المنورة": [24.4686,39.6142],
+  "دله - الدمام": [26.4207,50.0888],
+  "دله - الخبر": [26.2794,50.208],
+  "دله - الأحساء": [25.3833,49.5833],
+  "دله - بريدة": [26.326,43.975],
+  "دله - عنيزة": [26.09,43.99],
+  "دله - أبها": [18.2164,42.5053],
+  "دله - خميس مشيط": [18.3,42.7333],
+  "دله - تبوك": [28.3835,36.5662],
+  "دله - حائل": [27.5219,41.6907],
+  "دله - عرعر": [30.9753,41.0381],
+  "دله - سكاكا": [29.9697,40.2064],
+  "دله - جيزان": [16.8892,42.5611],
+  "دله - نجران": [17.4917,44.1322],
+  "دله - الباحة": [20.0129,41.4677],
 };
 
 const timeSlots = [
@@ -236,7 +259,7 @@ export default function NewAppointment() {
     
     // Service validation
     if (!region) errors.region = "هذا الحقل مطلوب";
-    if (!inspectionCenter) errors.inspectionCenter = "هذا الحقل مطلوب";
+    
     if (!appointmentDate) errors.appointmentDate = "هذا الحقل مطلوب";
     if (!appointmentTime) errors.appointmentTime = "هذا الحقل مطلوب";
     
@@ -261,7 +284,7 @@ export default function NewAppointment() {
 
     // Service info
     registrationData['المنطقة'] = region;
-    registrationData['المركز'] = inspectionCenter;
+    
     registrationData['التاريخ'] = appointmentDate;
     registrationData['الوقت'] = appointmentTime;
 
@@ -534,15 +557,15 @@ export default function NewAppointment() {
           )}
 
           {/* Service Center */}
-          <h5 className="font-semibold mb-4 mt-8" style={{ color: '#233f48'}}>المركز</h5>
+          
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 gap-4 mb-4">
             <div>
               <label className="block mb-1 text-sm">المنطقة<span className="text-red-500">*</span></label>
               <select 
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 value={region}
-                onChange={(e) => { setRegion(e.target.value); setInspectionCenter(""); if (e.target.value) setFormErrors(prev => { const n = {...prev}; delete n.region; return n; }); }}
+                onChange={(e) => { setRegion(e.target.value); setInspectionCenter((centersByRegion[e.target.value]||[])[0]||""); if (e.target.value) setFormErrors(prev => { const n = {...prev}; delete n.region; return n; }); }}
               >
                 {regions.map((r, i) => (
                   <option key={i} value={i === 0 ? "" : r}>{r}</option>
@@ -550,20 +573,7 @@ export default function NewAppointment() {
               </select>
               {formErrors.region && <p className="text-red-500 text-xs mt-1">{formErrors.region}</p>}
             </div>
-            <div>
-              <label className="block mb-1 text-sm">المركز<span className="text-red-500">*</span></label>
-              <select 
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                value={inspectionCenter}
-                onChange={(e) => { setInspectionCenter(e.target.value); if (e.target.value) setFormErrors(prev => { const n = {...prev}; delete n.inspectionCenter; return n; }); }}
-              >
-                <option value="">اختر المركز</option>
-                {region && centersByRegion[region] && centersByRegion[region].map((center, i) => (
-                  <option key={i} value={center}>{center}</option>
-                ))}
-              </select>
-              {formErrors.inspectionCenter && <p className="text-red-500 text-xs mt-1">{formErrors.inspectionCenter}</p>}
-            </div>
+            
           </div>
 
           {/* Map */}
