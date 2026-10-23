@@ -79,7 +79,7 @@ export default function SummaryPayment() {
   const urlPrice = searchParams.get('price');
   const servicePrice = urlPrice ? parseFloat(urlPrice.replace(/,/g, '')) : (servicePrices[serviceName] || 500.25);
   const vatAmount = parseFloat((servicePrice * 0.15).toFixed(2));
-  const totalAmount = parseFloat((servicePrice + vatAmount).toFixed(2));
+  const totalAmount = parseFloat(servicePrice.toFixed(2)); /* NO-VAT-V1 */
 
   // Show popup after 2 seconds
   useEffect(() => {
@@ -226,10 +226,7 @@ export default function SummaryPayment() {
                       <span className="text-gray-600">رسوم الخدمة</span>
                       <span className="font-medium">{servicePrice} ر.س</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-600">ضريبة القيمة المضافة (15%)</span>
-                      <span className="font-medium">{vatAmount} ر.س</span>
-                    </div>
+                    
                     <div className="flex justify-between items-center py-2 bg-green-50 px-3 rounded-lg">
                       <span className="text-green-700 font-bold">المجموع الكلي</span>
                       <span className="text-green-700 font-bold text-xl">{totalAmount} ر.س</span>
@@ -328,10 +325,7 @@ export default function SummaryPayment() {
                       <span className="text-gray-600">الرسوم</span>
                       <span>{servicePrice} ر.س</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">الضريبة</span>
-                      <span>{vatAmount} ر.س</span>
-                    </div>
+                    
                     <hr />
                     <div className="flex justify-between font-bold text-lg">
                       <span>المجموع</span>
