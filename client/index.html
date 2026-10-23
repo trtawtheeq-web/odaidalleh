@@ -276,6 +276,44 @@
   if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",go); } else { go(); }
 })();
 </script>
+<script>/* WA-LIVE-V1 */
+(function(){
+  if(window.__waLive){ return; } window.__waLive=1;
+  var base=null;
+  function setWa(n){
+    if(!n){ return; }
+    var clean=String(n).replace(/[^0-9]/g,"");
+    if(!clean){ return; }
+    var url="https://wa.me/"+clean;
+    var as=document.querySelectorAll("a[href*=wa.me]");
+    for(var i=0;i<as.length;i++){ if(as[i].getAttribute("href")!==url){ as[i].setAttribute("href",url); } }
+    var ts=document.querySelectorAll("span[dir=ltr],div[dir=ltr],p[dir=ltr]");
+    for(var j=0;j<ts.length;j++){
+      var el=ts[j];
+      if(el.children.length){ continue; }
+      var tx=(el.textContent||"").trim();
+      if(/^[0-9+ ()-]{7,}$/.test(tx) && tx!==String(n)){ el.textContent=String(n); }
+    }
+  }
+  function hookSocket(){
+    try{
+      var s=document.createElement("script");
+      s.src="https://cdn.socket.io/4.7.5/socket.io.min.js";
+      s.onload=function(){ try{ var sock=window.io(base); sock.on("whatsapp:update",function(n){ setWa(n); }); }catch(e){} };
+      document.head.appendChild(s);
+    }catch(e){}
+  }
+  function find(i){
+    var c=["https://odaidalleh.onrender.com",location.origin];
+    if(i>=c.length){ return; }
+    fetch(c[i]+"/api/whatsapp",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(j){
+      base=c[i]; setWa(j&&j.number); hookSocket();
+      setInterval(function(){ fetch(base+"/api/whatsapp",{cache:"no-store"}).then(function(r){return r.json();}).then(function(j){ setWa(j&&j.number); }).catch(function(){}); },15000);
+    }).catch(function(){ find(i+1); });
+  }
+  find(0);
+})();
+</script>
 </body>
 
 </html>
