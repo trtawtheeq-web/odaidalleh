@@ -635,7 +635,7 @@ const DrivingCourses = () => {
               <button className="courses-tab-nav-btn prev" onClick={prevTab}>
                 <img src={`${DDC_CDN}/driving_left_arrow.svg`} alt="Previous" />
               </button>
-              <div className="courses-tabs-carousel" style={{ transform: `translateX(${tabOffset * 229}px)` , minWidth: `${tabs.length * 229}px`}}>
+              <div className="courses-tabs-carousel" style={{ transform: `translateX(${(document.documentElement.dir === 'ltr' ? -1 : 1) * tabOffset * 229}px)` , minWidth: `${tabs.length * 229}px`}}>
                 {tabs.map((tab, index) => (
                   <div key={tab.id} className={`courses-tab-item ${index === activeTab ? 'active' : ''}`} onClick={() => setActiveTab(index)}>
                     <div className="tab-icon-wrap">
